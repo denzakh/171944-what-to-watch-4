@@ -5,7 +5,13 @@ import App from "./components/app/app.jsx";
 let settings = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
-  year: `2014`
+  year: `2014`,
+  filmTitles: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`]
 };
 
-ReactDOM.render(<App title={settings.title} genre={settings.genre} year={settings.year} />, document.querySelector(`#root`));
+ReactDOM.render(<App
+  title={settings.title}
+  genre={settings.genre}
+  year={settings.year}
+  filmTitles={settings.filmTitles}
+/>, document.querySelector(`#root`));
