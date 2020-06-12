@@ -22,5 +22,8 @@ module.exports = {
       }
     ],
   },
+  resolve: {
+    extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json']
+  },
   devtool: `source-map`,
 };
