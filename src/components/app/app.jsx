@@ -2,14 +2,14 @@ import React from "react";
 import Main from "../main/main";
 import PropTypes from 'prop-types';
 
-const App = (props) => {
-  return <Main
+const App = (props) => (
+  <Main
     title={props.title}
     genre={props.genre}
     year={props.year}
     filmTitles={props.filmTitles}
-  />;
-};
+  />
+);
 
 export default App;
 
