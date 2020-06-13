@@ -24,7 +24,3 @@ describe(`App component`, ()=>{
     expect(tree).toMatchSnapshot();
   });
 });
-
-
-
-

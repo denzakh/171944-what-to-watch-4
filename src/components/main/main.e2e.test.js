@@ -30,9 +30,9 @@ describe(`Main e2e`, ()=>{
     );
 
     const cardTitle = mainComponent.find(`.small-movie-card__title`);
-    console.dir(cardTitle);
-  //   startBtn.simulate(`click`);
 
-  //   expect(onStartBtnClick).toHaveBeenCalledTimes(1);
+    cardTitle.simulate(`click`);
+
+    expect(cardTitle).toHaveBeenCalledTimes(1);
   });
 });
