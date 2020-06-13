@@ -31,7 +31,7 @@ describe(`Main e2e`, ()=>{
 
     const cardTitle = mainComponent.find(`.small-movie-card__title`);
 
-    cardTitle.forEach(function(item) {
+    cardTitle.forEach((item)=>{
       item.simulate(`click`);
     });
 
