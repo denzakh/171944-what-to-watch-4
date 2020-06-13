@@ -33,6 +33,6 @@ describe(`Main e2e`, ()=>{
 
     cardTitle.simulate(`click`);
 
-    expect(cardTitle).toHaveBeenCalledTimes(1);
+    expect(handleCardTitleClick).toHaveBeenCalledTimes(1);
   });
 });
