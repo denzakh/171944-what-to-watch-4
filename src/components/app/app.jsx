@@ -8,6 +8,7 @@ const App = (props) => (
     genre={props.genre}
     year={props.year}
     filmTitles={props.filmTitles}
+    handleCardTitleClick={props.handleCardTitleClick}
   />
 );
 
@@ -20,5 +21,6 @@ App.propTypes = {
   filmTitles: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string).isRequired,
     PropTypes.array.isRequired
-  ])
+  ]),
+  handleCardTitleClick: PropTypes.func.isRequired
 };

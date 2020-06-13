@@ -6,7 +6,8 @@ let testSettings = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
   year: `2014`,
-  filmTitles: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`]
+  filmTitles: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`],
+  handleCardTitleClick: ()=>{}
 };
 
 describe(`Main component`, ()=>{
@@ -17,6 +18,7 @@ describe(`Main component`, ()=>{
           genre={testSettings.genre}
           year={testSettings.year}
           filmTitles={testSettings.filmTitles}
+          handleCardTitleClick={testSettings.handleCardTitleClick}
         />
     ).toJSON();
     expect(tree).toMatchSnapshot();
@@ -28,6 +30,7 @@ describe(`Main component`, ()=>{
           genre={testSettings.genre}
           year={testSettings.year}
           filmTitles={[]}
+          handleCardTitleClick={testSettings.handleCardTitleClick}
         />
     ).toJSON();
     expect(tree).toMatchSnapshot();
