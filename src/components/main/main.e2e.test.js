@@ -25,14 +25,16 @@ describe(`Main e2e`, ()=>{
           genre={testSettings.genre}
           year={testSettings.year}
           filmTitles={testSettings.filmTitles}
-          handleCardTitleClick={testSettings.handleCardTitleClick}
+          handleCardTitleClick={handleCardTitleClick}
         />
     );
 
     const cardTitle = mainComponent.find(`.small-movie-card__title`);
 
-    cardTitle.simulate(`click`);
+    cardTitle.forEach(function(item) {
+      item.simulate(`click`);
+    });
 
-    expect(handleCardTitleClick).toHaveBeenCalledTimes(1);
+    expect(handleCardTitleClick).toHaveBeenCalledTimes(3);
   });
 });
