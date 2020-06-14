@@ -35,6 +35,6 @@ describe(`Main e2e`, ()=>{
       item.simulate(`click`);
     });
 
-    expect(handleCardTitleClick).toHaveBeenCalledTimes(3);
+    expect(handleCardTitleClick).toHaveBeenCalledTimes(cardTitle.length);
   });
 });
