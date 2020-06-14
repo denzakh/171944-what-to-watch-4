@@ -6,7 +6,8 @@ let settings = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
   year: `2014`,
-  filmTitles: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`]
+  filmTitles: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`],
+  handleCardTitleClick: ()=>{}
 };
 
 ReactDOM.render(<App
@@ -14,4 +15,5 @@ ReactDOM.render(<App
   genre={settings.genre}
   year={settings.year}
   filmTitles={settings.filmTitles}
+  handleCardTitleClick={settings.handleCardTitleClick}
 />, document.querySelector(`#root`));

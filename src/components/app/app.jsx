@@ -2,14 +2,15 @@ import React from "react";
 import Main from "../main/main";
 import PropTypes from 'prop-types';
 
-const App = (props) => {
-  return <Main
+const App = (props) => (
+  <Main
     title={props.title}
     genre={props.genre}
     year={props.year}
     filmTitles={props.filmTitles}
-  />;
-};
+    handleCardTitleClick={props.handleCardTitleClick}
+  />
+);
 
 export default App;
 
@@ -20,5 +21,6 @@ App.propTypes = {
   filmTitles: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string).isRequired,
     PropTypes.array.isRequired
-  ])
+  ]),
+  handleCardTitleClick: PropTypes.func.isRequired
 };

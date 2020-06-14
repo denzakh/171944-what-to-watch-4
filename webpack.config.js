@@ -8,7 +8,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
-    open: false,
+    open: true,
     port: 1337,
   },
   module: {
@@ -23,7 +23,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json']
   },
   devtool: `source-map`,
 };
