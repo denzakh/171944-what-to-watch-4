@@ -13,7 +13,7 @@ let testSettings = {
 describe(`Card component`, ()=>{
   it(`should render Card component markup`, () => {
     const tree = renderer.create(
-        <Card title={testSettings.title} poster={testSettings.poster} href={testSettings.href} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />
+        <Card title={testSettings.title} poster={testSettings.poster} href={testSettings.href} onMouseEnter={testSettings.onMouseEnter} onMouseLeave={testSettings.onMouseLeave} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

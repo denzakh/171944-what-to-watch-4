@@ -15,8 +15,8 @@ describe(`App component`, ()=>{
   it(`should render App component markup`, () => {
     const tree = renderer.create(
         <App
-          settings={props.settings}
-          films={films}
+          settings={testSettings.settings}
+          films={testSettings.films}
         />
     ).toJSON();
     expect(tree).toMatchSnapshot();
