@@ -1,8 +1,10 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import CardList from "../card-list/card-list";
 
 const Main = (props) => {
-  let {title, genre, year, filmTitles, handleCardTitleClick} = props;
+  const {title, genre, year} = props.settings;
+  const films = props.films;
 
   return <div>
     <section className="movie-card">
@@ -97,18 +99,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {filmTitles.map((filmTitle)=>(
-            <article className="small-movie-card catalog__movies-card" key={filmTitle}>
-              <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title" onClick={handleCardTitleClick}>
-                <a className="small-movie-card__link" href="movie-page.html">{filmTitle}</a>
-              </h3>
-            </article>
-          ))}
-        </div>
+        <CardList films={props.films} />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -135,11 +126,10 @@ const Main = (props) => {
 export default Main;
 
 Main.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  filmTitles: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string).isRequired
-  ]),
-  handleCardTitleClick: PropTypes.func.isRequired
+  settings: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired
+  }).isRequired,
+  films: PropTypes.array.isRequired
 };

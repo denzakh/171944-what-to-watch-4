@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should render Card component markup 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="The Godfather"
+        height="175"
+        src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/"
+      >
+        The Godfather
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Knives Out"
+        height="175"
+        src="https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/"
+      >
+        Knives Out
+      </a>
+    </h3>
+  </article>
+</div>
+`;
