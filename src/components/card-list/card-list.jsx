@@ -20,7 +20,7 @@ class CardList extends PureComponent {
     });
   }
 
-  onMouseLeave(e) {
+  onMouseLeave() {
     this.setState({
       activeCard: null
     });
@@ -42,16 +42,16 @@ class CardList extends PureComponent {
       </div>
     );
   }
-};
+}
 
 export default CardList;
 
 CardList.propTypes = {
   films: PropTypes.arrayOf(
-    PropTypes.shape({
-      Title: PropTypes.string.isRequired,
-      Poster: PropTypes.string.isRequired,
-      LocalPage: PropTypes.string.isRequired
-    })
+      PropTypes.shape({
+        Title: PropTypes.string.isRequired,
+        Poster: PropTypes.string.isRequired,
+        LocalPage: PropTypes.string.isRequired
+      })
   ).isRequired
 };
