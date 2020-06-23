@@ -14,9 +14,9 @@ class CardList extends PureComponent {
     this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
-  onMouseEnter(e) {
+  onMouseEnter(film) {
     this.setState({
-      activeCard: e.target
+      activeCard: film
     });
   }
 
@@ -31,9 +31,14 @@ class CardList extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((card)=>(
-          <Card key={card.Title} title={card.Title} poster={card.Poster} href={card.LocalPage} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />
-        ))}
+        {films.map((card)=>{
+          let film = {
+            title: card.Title,
+            poster: card.Poster,
+            href: card.LocalPage
+          };
+          return (<Card key={card.Title} film={film} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />);
+        })}
       </div>
     );
   }
