@@ -52,6 +52,6 @@ CardList.propTypes = {
       Title: PropTypes.string.isRequired,
       Poster: PropTypes.string.isRequired,
       LocalPage: PropTypes.string.isRequired
-    }),
+    })
   ).isRequired
 };

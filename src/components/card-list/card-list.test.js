@@ -13,12 +13,12 @@ let testSetting = {
     Poster: `https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg`,
     LocalPage: `/`
   }]
-}
+};
 
 describe(`Card component`, ()=>{
   it(`should render Card component markup`, () => {
     const tree = renderer.create(
-      <CardList films={testSetting.films} />
+        <CardList films={testSetting.films} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const Card = (props) => {
   const {film, onMouseEnter, onMouseLeave} = props;
 
-  const handlerMouseEnter = (e) => {
+  const handlerMouseEnter = () => {
     onMouseEnter(film);
-  }
+  };
 
   return (
     <article className="small-movie-card catalog__movies-card" onMouseEnter={handlerMouseEnter} onMouseLeave={onMouseLeave}>
@@ -17,7 +17,7 @@ const Card = (props) => {
         <a className="small-movie-card__link" href={film.href}>{film.title}</a>
       </h3>
     </article>
-  )
+  );
 };
 
 export default Card;
@@ -29,6 +29,6 @@ Card.propTypes = {
     href: PropTypes.string.isRequired
   }).isRequired,
   onMouseEnter: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired
+  onMouseLeave: PropTypes.func.isRequired
 };
 
