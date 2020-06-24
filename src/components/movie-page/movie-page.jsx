@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const MoviePage = (props) => {
   const {title, year, genre, director, actors, poster, imdbRating, imdbVotes, plot, bg, bgcolor, avatar} = props.film;
 
-  let level = "--";
+  let level = `--`;
 
-  switch(Math.floor(+imdbRating)) {
+  switch (Math.floor(+imdbRating)) {
     case 0:
     case 1:
     case 2:
@@ -28,7 +28,9 @@ const MoviePage = (props) => {
     case 10:
       level = `Awesome`;
       break;
-    default: "--"
+    default:
+      level = `--`;
+      break;
   }
 
   return (
@@ -49,7 +51,7 @@ const MoviePage = (props) => {
             </div>
             <div className="user-block">
               <div className="user-block__avatar">
-                <img src={avatar ? avatar : "img/avatar.jpg"} alt="User avatar" width={63} height={63} />
+                <img src={avatar ? avatar : `img/avatar.jpg`} alt="User avatar" width={63} height={63} />
               </div>
             </div>
           </header>
@@ -166,12 +168,12 @@ const MoviePage = (props) => {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default MoviePage;
 
 MoviePage.propTypes = {
-  film:PropTypes.shape({
+  film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,

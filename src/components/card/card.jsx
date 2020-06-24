@@ -10,8 +10,8 @@ const Card = (props) => {
 
   const handlerClick = (e) => {
     e.preventDefault();
-    onClick(props.id);
-  }
+    onClick(id);
+  };
 
   return (
     <article
@@ -39,6 +39,8 @@ Card.propTypes = {
     href: PropTypes.string.isRequired
   }).isRequired,
   onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired
+  onMouseLeave: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired
 };
 

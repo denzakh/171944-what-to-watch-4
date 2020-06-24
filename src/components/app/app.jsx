@@ -6,7 +6,7 @@ import MoviePage from "../movie-page/movie-page";
 
 class App extends PureComponent {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -19,10 +19,10 @@ class App extends PureComponent {
   _renderApp() {
     let id = this.state.activeMoviePage;
 
-    if(this.props.films[id]) {
+    if (this.props.films[id]) {
       return (<MoviePage
         film={this.getFilm(id)}
-      />)
+      />);
     } else {
       return (<Main
         settings={this.props.settings}
@@ -30,8 +30,6 @@ class App extends PureComponent {
         setActiveMoviePage={this.setActiveMoviePage}
       />);
     }
-
-    return null;
   }
 
   setActiveMoviePage(id) {
@@ -74,7 +72,7 @@ class App extends PureComponent {
       </BrowserRouter>
     );
   }
-};
+}
 
 export default App;
 

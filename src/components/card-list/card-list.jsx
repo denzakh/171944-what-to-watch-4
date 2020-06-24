@@ -31,7 +31,7 @@ class CardList extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((card,i)=>{
+        {films.map((card, i)=>{
           let film = {
             title: card.Title,
             poster: card.Poster,
