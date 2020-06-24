@@ -2,21 +2,16 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Card from "./card";
+import films from "../../mocks/films";
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-let testFilm = {
-  title: `The Godfather`,
-  poster: `https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg`,
-  href: `/`
-};
-
 describe(`Card e2e`, ()=>{
   it(`should Card render`, ()=>{
     const wrapper = shallow(
-        <Card film={testFilm} onMouseEnter={()=>{}} onMouseLeave={()=>{}} />
+        <Card film={films[0]} id={`0`} onMouseEnter={()=>{}} onMouseLeave={()=>{}} onClick={()=>{}} />
     );
 
     expect(wrapper.exists(`.small-movie-card`)).toBe(true);
@@ -26,13 +21,13 @@ describe(`Card e2e`, ()=>{
     const onMouseEnter = jest.fn();
 
     const wrapper = shallow(
-        <Card film={testFilm} onMouseEnter={onMouseEnter} onMouseLeave={()=>{}} />
+        <Card film={films[0]} id={`0`} onMouseEnter={onMouseEnter} onMouseLeave={()=>{}} onClick={()=>{}} />
     );
 
-    wrapper.simulate(`mouseenter`, testFilm);
+    wrapper.simulate(`mouseenter`, films[0]);
 
     expect(onMouseEnter).toHaveBeenCalledTimes(1);
-    expect(onMouseEnter).toHaveBeenCalledWith(testFilm);
+    expect(onMouseEnter).toHaveBeenCalledWith(films[0]);
   });
 });
 

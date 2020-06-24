@@ -21,7 +21,7 @@ class App extends PureComponent {
 
     if (this.props.films[id]) {
       return (<MoviePage
-        film={this.getFilm(id)}
+        film={this.props.films[id]}
       />);
     } else {
       return (<Main
@@ -38,27 +38,7 @@ class App extends PureComponent {
     });
   }
 
-  getFilm(id) {
-    let filmSrc = this.props.films[id];
-    return {
-      title: filmSrc.Title,
-      year: filmSrc.Year,
-      genre: filmSrc.Genre,
-      director: filmSrc.Director,
-      actors: filmSrc.Actors,
-      plot: filmSrc.Plot,
-      poster: filmSrc.Poster,
-      imdbRating: filmSrc.imdbRating,
-      imdbVotes: filmSrc.imdbVotes,
-      bg: filmSrc.bg,
-      bgcolor: filmSrc.bgcolor,
-      avatar: filmSrc.avatar
-    };
-  }
-
   render() {
-
-
     return (
       <BrowserRouter>
         <Switch>
@@ -66,7 +46,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/movie-page">
-            <MoviePage film={this.getFilm(0)} />
+            <MoviePage film={this.props.films[0]} />
           </Route>
         </Switch>
       </BrowserRouter>

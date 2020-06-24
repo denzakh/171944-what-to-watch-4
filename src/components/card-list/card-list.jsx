@@ -32,15 +32,10 @@ class CardList extends PureComponent {
     return (
       <div className="catalog__movies-list">
         {films.map((card, i)=>{
-          let film = {
-            title: card.Title,
-            poster: card.Poster,
-            href: card.LocalPage
-          };
           return (<Card
-            key={card.Title}
-            id={i}
-            film={film}
+            key={card.title}
+            id={i.toString()}
+            film={card}
             onMouseEnter={this.onMouseEnter}
             onMouseLeave={this.onMouseLeave}
             onClick={this.props.setActiveMoviePage} />);

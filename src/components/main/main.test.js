@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
+import films from "../../mocks/films";
 
 let testSettings = {
   settings: {
@@ -8,7 +9,7 @@ let testSettings = {
     genre: `Drama`,
     year: `2014`,
   },
-  films: []
+  films: films
 };
 
 describe(`Main component`, ()=>{
@@ -22,3 +23,6 @@ describe(`Main component`, ()=>{
     expect(tree).toMatchSnapshot();
   });
 });
+
+
+

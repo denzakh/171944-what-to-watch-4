@@ -259,6 +259,7 @@ exports[`App component should render App component markup 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -266,9 +267,7 @@ exports[`App component should render App component markup 1`] = `
             className="small-movie-card__image"
           >
             <img
-              alt="The Godfather"
               height="175"
-              src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
               width="280"
             />
           </div>
@@ -277,10 +276,8 @@ exports[`App component should render App component markup 1`] = `
           >
             <a
               className="small-movie-card__link"
-              href="/"
-            >
-              The Godfather
-            </a>
+              href=""
+            />
           </h3>
         </article>
       </div>

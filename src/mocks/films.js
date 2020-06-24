@@ -42,7 +42,7 @@ const films = [{
   Production: `Paramount Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Knives Out`,
@@ -84,7 +84,7 @@ const films = [{
   Production: `Lionsgate`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Parasite`,
@@ -127,7 +127,7 @@ const films = [{
   Production: `NEON`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `The Shawshank Redemption`,
@@ -170,7 +170,7 @@ const films = [{
   Production: `Columbia Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Avengers: Endgame`,
@@ -211,7 +211,7 @@ const films = [{
   Production: `Marvel Studios`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Inception`,
@@ -252,7 +252,7 @@ const films = [{
   Production: `Warner Bros. Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Once Upon a Time... in Hollywood`,
@@ -293,7 +293,7 @@ const films = [{
   Production: `Columbia Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Interstellar`,
@@ -334,7 +334,27 @@ const films = [{
   Production: `Paramount Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 }];
 
-export default films;
+let getFilm = (filmSrc) => {
+  return {
+    title: filmSrc.Title,
+    year: filmSrc.Year,
+    genre: filmSrc.Genre,
+    director: filmSrc.Director,
+    actors: filmSrc.Actors,
+    plot: filmSrc.Plot,
+    poster: filmSrc.Poster,
+    imdbRating: filmSrc.imdbRating,
+    imdbVotes: filmSrc.imdbVotes,
+    bg: filmSrc.bg,
+    bgcolor: filmSrc.bgcolor,
+    avatar: filmSrc.avatar,
+    href: filmSrc.href
+  };
+}
+
+let adaptiveFilms = films.map((item)=>{return getFilm(item)});
+
+export default adaptiveFilms;

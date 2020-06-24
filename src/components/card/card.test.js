@@ -1,17 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Card from "./card";
-
-let testFilm = {
-  title: `The Godfather`,
-  poster: `https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg`,
-  href: `/`
-};
+import films from "../../mocks/films";
 
 describe(`Card component`, ()=>{
   it(`should render Card component markup`, () => {
     const tree = renderer.create(
-        <Card film={testFilm} onMouseEnter={()=>{}} onMouseLeave={()=>{}} />
+        <Card film={films[0]} id={`0`} onMouseEnter={()=>{}} onMouseLeave={()=>{}} onClick={()=>{}} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
