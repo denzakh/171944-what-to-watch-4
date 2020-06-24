@@ -15,6 +15,9 @@ const films = [{
   Country: `USA`,
   Awards: `Won 3 Oscars. Another 26 wins & 30 nominations.`,
   Poster: `https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg`,
+  bg: `https://66.media.tumblr.com/9a9ee3ab320563f95e85c793e366053b/tumblr_nqrumn1CfN1rf1jvro1_1280.jpg`,
+  bgcolor: `#edd89a`,
+  avatar: `https://theotherboard.com/forum/uploads/profile/photo-1692.png`,
   Ratings: [
     {
       Source: `Internet Movie Database`,
