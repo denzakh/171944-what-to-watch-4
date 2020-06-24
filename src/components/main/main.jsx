@@ -5,6 +5,7 @@ import CardList from "../card-list/card-list";
 const Main = (props) => {
   const {title, genre, year} = props.settings;
   const films = props.films;
+  const setActiveMoviePage = props.setActiveMoviePage;
 
   return <div>
     <section className="movie-card">
@@ -99,7 +100,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <CardList films={films} />
+        <CardList films={films} setActiveMoviePage={setActiveMoviePage} />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -131,5 +132,6 @@ Main.propTypes = {
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired
   }).isRequired,
-  films: PropTypes.array.isRequired
+  films: PropTypes.array.isRequired,
+  setActiveMoviePage: PropTypes.func.isRequired
 };

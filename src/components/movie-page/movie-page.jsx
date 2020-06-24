@@ -4,17 +4,44 @@ import PropTypes from 'prop-types';
 const MoviePage = (props) => {
   const {title, year, genre, director, actors, poster, imdbRating, imdbVotes, plot, bg, bgcolor, avatar} = props.film;
 
+  let level = "--";
+
+  switch(Math.floor(+imdbRating)) {
+    case 0:
+    case 1:
+    case 2:
+      level = `Bad`;
+      break;
+    case 3:
+    case 4:
+      level = `Normal`;
+      break;
+    case 5:
+    case 6:
+    case 7:
+      level = `Good`;
+      break;
+    case 8:
+    case 9:
+      level = `Very good`;
+      break;
+    case 10:
+      level = `Awesome`;
+      break;
+    default: "--"
+  }
+
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full" style={{background: bgcolor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={bg} alt="The Grand Budapest Hotel" />
+            <img src={bg} alt={title} />
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <a href="/" className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
@@ -73,7 +100,7 @@ const MoviePage = (props) => {
               <div className="movie-rating">
                 <div className="movie-rating__score">{imdbRating}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
+                  <span className="movie-rating__level">{level}</span>
                   <span className="movie-rating__count">{imdbVotes} votes</span>
                 </p>
               </div>

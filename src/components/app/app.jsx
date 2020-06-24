@@ -8,19 +8,41 @@ class App extends PureComponent {
 
   constructor(props){
     super(props);
+
+    this.state = {
+      activeMoviePage: null
+    };
+
+    this.setActiveMoviePage = this.setActiveMoviePage.bind(this);
   }
 
   _renderApp() {
-    return (<Main
-      settings={this.props.settings}
-      films={this.props.films}
-    />);
+    let id = this.state.activeMoviePage;
+
+    if(this.props.films[id]) {
+      return (<MoviePage
+        film={this.getFilm(id)}
+      />)
+    } else {
+      return (<Main
+        settings={this.props.settings}
+        films={this.props.films}
+        setActiveMoviePage={this.setActiveMoviePage}
+      />);
+    }
+
+    return null;
   }
 
-  render() {
+  setActiveMoviePage(id) {
+    this.setState({
+      activeMoviePage: id
+    });
+  }
 
-    let filmSrc = this.props.films[0];
-    let film = {
+  getFilm(id) {
+    let filmSrc = this.props.films[id];
+    return {
       title: filmSrc.Title,
       year: filmSrc.Year,
       genre: filmSrc.Genre,
@@ -34,6 +56,10 @@ class App extends PureComponent {
       bgcolor: filmSrc.bgcolor,
       avatar: filmSrc.avatar
     };
+  }
+
+  render() {
+
 
     return (
       <BrowserRouter>
@@ -42,15 +68,13 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/movie-page">
-            <MoviePage film={film} />
+            <MoviePage film={this.getFilm(0)} />
           </Route>
         </Switch>
       </BrowserRouter>
     );
   }
 };
-
-
 
 export default App;
 

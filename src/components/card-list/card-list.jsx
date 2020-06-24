@@ -31,13 +31,19 @@ class CardList extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((card)=>{
+        {films.map((card,i)=>{
           let film = {
             title: card.Title,
             poster: card.Poster,
             href: card.LocalPage
           };
-          return (<Card key={card.Title} film={film} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />);
+          return (<Card
+            key={card.Title}
+            id={i}
+            film={film}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onClick={this.props.setActiveMoviePage} />);
         })}
       </div>
     );
@@ -53,5 +59,6 @@ CardList.propTypes = {
         Poster: PropTypes.string.isRequired,
         LocalPage: PropTypes.string.isRequired
       })
-  ).isRequired
+  ).isRequired,
+  setActiveMoviePage: PropTypes.func.isRequired
 };
