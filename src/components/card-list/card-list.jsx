@@ -48,12 +48,6 @@ class CardList extends PureComponent {
 export default CardList;
 
 CardList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        Title: PropTypes.string.isRequired,
-        Poster: PropTypes.string.isRequired,
-        LocalPage: PropTypes.string.isRequired
-      })
-  ).isRequired,
+  films: PropTypes.array.isRequired,
   setActiveMoviePage: PropTypes.func.isRequired
 };
