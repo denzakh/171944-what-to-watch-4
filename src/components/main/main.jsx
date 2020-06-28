@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import CardList from "../card-list/card-list";
 
 const Main = (props) => {
-  const {title, genre, year} = props.settings;
+  const {title, genre, year} = props.promoFilm;
   const films = props.films;
 
   return <div>
@@ -126,7 +126,7 @@ const Main = (props) => {
 export default Main;
 
 Main.propTypes = {
-  settings: PropTypes.shape({
+  promoFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired

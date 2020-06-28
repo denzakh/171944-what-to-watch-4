@@ -15,6 +15,9 @@ const films = [{
   Country: `USA`,
   Awards: `Won 3 Oscars. Another 26 wins & 30 nominations.`,
   Poster: `https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg`,
+  bg: `https://66.media.tumblr.com/9a9ee3ab320563f95e85c793e366053b/tumblr_nqrumn1CfN1rf1jvro1_1280.jpg`,
+  bgcolor: `#dbd5c3`,
+  avatar: `https://theotherboard.com/forum/uploads/profile/photo-1692.png`,
   Ratings: [
     {
       Source: `Internet Movie Database`,
@@ -39,7 +42,7 @@ const films = [{
   Production: `Paramount Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Knives Out`,
@@ -56,6 +59,7 @@ const films = [{
   Country: `USA`,
   Awards: `Nominated for 1 Oscar. Another 45 wins & 93 nominations.`,
   Poster: `https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg`,
+  bg: `https://medias.spotern.com/spots/w1280/212/212025-1562323728.jpg`,
   Ratings: [
     {
       Source: `Internet Movie Database`,
@@ -80,7 +84,7 @@ const films = [{
   Production: `Lionsgate`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Parasite`,
@@ -97,6 +101,8 @@ const films = [{
   Country: `South Korea`,
   Awards: `Won 4 Oscars. Another 263 wins & 227 nominations.`,
   Poster: `https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg`,
+  bg: `https://nsa40.casimages.com/img/2020/01/05/200105073142404267.jpg`,
+  bgcolor: `#b9efdb`,
   Ratings: [
     {
       Source: `Internet Movie Database`,
@@ -121,7 +127,7 @@ const films = [{
   Production: `NEON`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `The Shawshank Redemption`,
@@ -138,6 +144,8 @@ const films = [{
   Country: `USA`,
   Awards: `Nominated for 7 Oscars. Another 21 wins & 35 nominations.`,
   Poster: `https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg`,
+  bg: `https://www.cleveland.com/resizer/XKj4l4Bx9gbozxq2TA7aaz6ltT0=/1280x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/TWX4SKO5SNBO5II6NH73F6F2YE.JPG`,
+  bgcolor: `#fed1b4`,
   Ratings: [
     {
       Source: `Internet Movie Database`,
@@ -162,7 +170,7 @@ const films = [{
   Production: `Columbia Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Avengers: Endgame`,
@@ -203,7 +211,7 @@ const films = [{
   Production: `Marvel Studios`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Inception`,
@@ -244,7 +252,7 @@ const films = [{
   Production: `Warner Bros. Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Once Upon a Time... in Hollywood`,
@@ -285,7 +293,7 @@ const films = [{
   Production: `Columbia Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 },
 {
   Title: `Interstellar`,
@@ -326,7 +334,29 @@ const films = [{
   Production: `Paramount Pictures`,
   Website: `N/A`,
   Response: `True`,
-  LocalPage: `/`
+  href: `/`
 }];
 
-export default films;
+let getFilm = (filmSrc) => {
+  return {
+    title: filmSrc.Title,
+    year: filmSrc.Year,
+    genre: filmSrc.Genre,
+    director: filmSrc.Director,
+    actors: filmSrc.Actors,
+    plot: filmSrc.Plot,
+    poster: filmSrc.Poster,
+    imdbRating: filmSrc.imdbRating,
+    imdbVotes: filmSrc.imdbVotes,
+    bg: filmSrc.bg,
+    bgcolor: filmSrc.bgcolor,
+    avatar: filmSrc.avatar,
+    href: filmSrc.href
+  };
+};
+
+let adaptiveFilms = films.map((item)=>{
+  return getFilm(item);
+});
+
+export default adaptiveFilms;

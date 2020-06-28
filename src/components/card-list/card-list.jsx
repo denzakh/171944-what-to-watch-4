@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
-import Card from "../card/card";
+import SmallMovieCard from "../small-movie-card/small-movie-card";
 
 class CardList extends PureComponent {
   constructor(props) {
@@ -31,13 +31,14 @@ class CardList extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((card)=>{
-          let film = {
-            title: card.Title,
-            poster: card.Poster,
-            href: card.LocalPage
-          };
-          return (<Card key={card.Title} film={film} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} />);
+        {films.map((film, i)=>{
+          return (<SmallMovieCard
+            key={film.title}
+            id={i.toString()}
+            film={film}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onClick={this.props.setActiveMoviePage} />);
         })}
       </div>
     );
@@ -47,11 +48,6 @@ class CardList extends PureComponent {
 export default CardList;
 
 CardList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        Title: PropTypes.string.isRequired,
-        Poster: PropTypes.string.isRequired,
-        LocalPage: PropTypes.string.isRequired
-      })
-  ).isRequired
+  films: PropTypes.array.isRequired,
+  setActiveMoviePage: PropTypes.func
 };
