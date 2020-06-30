@@ -4,23 +4,14 @@ import PropTypes from 'prop-types';
 
 const App = (props) => (
   <Main
-    title={props.title}
-    genre={props.genre}
-    year={props.year}
-    filmTitles={props.filmTitles}
-    handleCardTitleClick={props.handleCardTitleClick}
+    promoFilm={props.promoFilm}
+    films={props.films}
   />
 );
 
 export default App;
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  filmTitles: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string).isRequired,
-    PropTypes.array.isRequired
-  ]),
-  handleCardTitleClick: PropTypes.func.isRequired
+  promoFilm: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
 };

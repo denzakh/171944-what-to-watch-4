@@ -1,15 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app";
+import CardList from "./card-list";
 import films from "../../mocks/films";
 
-describe(`App component`, ()=>{
-  it(`should render App component markup`, () => {
+
+describe(`Card component`, ()=>{
+  it(`should render Card component markup`, () => {
     const tree = renderer.create(
-        <App
-          promoFilm={films[0]}
-          films={films}
-        />
+        <CardList films={films} setActiveMoviePage={()=>{}} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
