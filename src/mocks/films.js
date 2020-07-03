@@ -353,8 +353,10 @@ let getFilm = (filmSrc) => {
     avatar: filmSrc.avatar,
     href: filmSrc.href
   };
-}
+};
 
-let adaptiveFilms = films.map((item)=>{return getFilm(item)});
+let adaptiveFilms = films.map((item)=>{
+  return getFilm(item);
+});
 
 export default adaptiveFilms;

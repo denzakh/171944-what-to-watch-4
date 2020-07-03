@@ -9,8 +9,8 @@ exports[`Main component should render Main component markup 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="The Godfather"
+        src="https://66.media.tumblr.com/9a9ee3ab320563f95e85c793e366053b/tumblr_nqrumn1CfN1rf1jvro1_1280.jpg"
       />
     </div>
     <h1
@@ -69,9 +69,9 @@ exports[`Main component should render Main component markup 1`] = `
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="The Godfather poster"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
             width="218"
           />
         </div>
@@ -81,7 +81,7 @@ exports[`Main component should render Main component markup 1`] = `
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            The Godfather
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ exports[`Main component should render Main component markup 1`] = `
             <span
               className="movie-card__genre"
             >
-              Drama
+              Crime, Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              1972
             </span>
           </p>
           <div

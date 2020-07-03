@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app";
-import films from "./mocks/films";
+import films from "../../mocks/films";
 
 describe(`App component`, ()=>{
   it(`should render App component markup`, () => {

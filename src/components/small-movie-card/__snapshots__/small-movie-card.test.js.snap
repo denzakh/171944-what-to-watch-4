@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card component should render Card component markup 1`] = `
+exports[`Card component should render SmallMovieCard component markup 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onClick={[Function]}

@@ -14,6 +14,3 @@ describe(`Main component`, ()=>{
     expect(tree).toMatchSnapshot();
   });
 });
-
-
-

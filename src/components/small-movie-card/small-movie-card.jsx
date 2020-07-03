@@ -5,7 +5,9 @@ const SmallMovieCard = (props) => {
   const {film, id, onMouseEnter, onMouseLeave, onClick} = props;
 
   const handlerMouseEnter = () => {
-    onMouseEnter && onMouseEnter(film);
+    if (onMouseEnter) {
+      onMouseEnter(film);
+    }
   };
 
   const handlerClick = (e) => {

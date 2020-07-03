@@ -126,8 +126,8 @@ const Main = (props) => {
 
 export default Main;
 
-Main.promoFilm = {
-  settings: PropTypes.shape({
+Main.propTypes = {
+  promoFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
