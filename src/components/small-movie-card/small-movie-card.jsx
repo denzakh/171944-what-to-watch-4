@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Card = (props) => {
+const SmallMovieCard = (props) => {
   const {film, id, onMouseEnter, onMouseLeave, onClick} = props;
 
   const handlerMouseEnter = () => {
-    onMouseEnter(film);
+    onMouseEnter && onMouseEnter(film);
   };
 
   const handlerClick = (e) => {
@@ -30,17 +30,17 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default SmallMovieCard;
 
-Card.propTypes = {
+SmallMovieCard.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired
   }).isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  onClick: PropTypes.func,
   id: PropTypes.string.isRequired
 };
 

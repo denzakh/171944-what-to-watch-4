@@ -25,7 +25,7 @@ class App extends PureComponent {
       />);
     } else {
       return (<Main
-        settings={this.props.settings}
+        promoFilm={this.props.promoFilm}
         films={this.props.films}
         setActiveMoviePage={this.setActiveMoviePage}
       />);
@@ -57,6 +57,6 @@ class App extends PureComponent {
 export default App;
 
 App.propTypes = {
-  settings: PropTypes.object.isRequired,
+  promoFilm: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
 };
