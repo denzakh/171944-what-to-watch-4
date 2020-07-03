@@ -4,6 +4,7 @@ import CardList from "../card-list/card-list";
 
 const Main = (props) => {
   const {title, genre, year, bg, poster} = props.promoFilm;
+
   const films = props.films;
   const setActiveMoviePage = props.setActiveMoviePage;
 
