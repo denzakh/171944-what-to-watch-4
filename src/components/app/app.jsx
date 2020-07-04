@@ -1,13 +1,58 @@
-import React from "react";
+import React, {PureComponent} from "react";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import PropTypes from "prop-types";
 import Main from "../main/main";
-import PropTypes from 'prop-types';
+import MoviePage from "../movie-page/movie-page";
 
-const App = (props) => (
-  <Main
-    promoFilm={props.promoFilm}
-    films={props.films}
-  />
-);
+class App extends PureComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeMoviePage: null
+    };
+
+    this.setActiveMoviePage = this.setActiveMoviePage.bind(this);
+  }
+
+  _renderApp() {
+    let id = this.state.activeMoviePage;
+
+    if (this.props.films[id]) {
+      return (<MoviePage
+        film={this.props.films[id]}
+      />);
+    } else {
+      return (<Main
+        promoFilm={this.props.promoFilm}
+        films={this.props.films}
+        setActiveMoviePage={this.setActiveMoviePage}
+      />);
+    }
+  }
+
+  setActiveMoviePage(id) {
+    this.setState({
+      activeMoviePage: id
+    });
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/movie-page">
+            <MoviePage film={this.props.films[0]} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 export default App;
 

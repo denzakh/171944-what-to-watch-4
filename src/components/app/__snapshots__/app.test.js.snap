@@ -9,8 +9,8 @@ exports[`App component should render App component markup 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="The Godfather"
+        src="https://66.media.tumblr.com/9a9ee3ab320563f95e85c793e366053b/tumblr_nqrumn1CfN1rf1jvro1_1280.jpg"
       />
     </div>
     <h1
@@ -69,9 +69,9 @@ exports[`App component should render App component markup 1`] = `
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="The Godfather poster"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
             width="218"
           />
         </div>

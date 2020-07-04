@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import CardList from "../card-list/card-list";
 
 const Main = (props) => {
-  const {title, genre, year} = props.promoFilm;
+  const {title, genre, year, bg, poster} = props.promoFilm;
+
   const films = props.films;
+  const setActiveMoviePage = props.setActiveMoviePage;
 
   return <div>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+        <img src={bg} alt={title} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -33,7 +35,7 @@ const Main = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={poster} alt={`${title} poster`} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
@@ -99,7 +101,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <CardList films={films} />
+        <CardList films={films} setActiveMoviePage={setActiveMoviePage} />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -129,7 +131,10 @@ Main.propTypes = {
   promoFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired
+    year: PropTypes.string.isRequired,
+    bg: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
   }).isRequired,
-  films: PropTypes.array.isRequired
+  films: PropTypes.array.isRequired,
+  setActiveMoviePage: PropTypes.func
 };
