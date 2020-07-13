@@ -1,35 +1,54 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
+import VideoPlayer from "../video-player/video-player.jsx";
 
-const SmallMovieCard = (props) => {
-  const {film, id, onMouseEnter, onMouseLeave, onClick} = props;
+class SmallMovieCard extends PureComponent {
 
-  const handlerMouseEnter = () => {
-    if (onMouseEnter) {
-      onMouseEnter(film);
-    }
-  };
+  constructor(props) {
+    super(props);
 
-  const handlerClick = (e) => {
-    e.preventDefault();
-    onClick(id);
-  };
+    this.state = {isPlaying: false};
+  }
 
-  return (
-    <article
-      className="small-movie-card catalog__movies-card"
-      onMouseEnter={handlerMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onClick={handlerClick}
-    >
-      <div className="small-movie-card__image">
-        <img src={film.poster} alt={film.title} width="280" height="175" />
-      </div>
-      <h3 className="small-movie-card__title" >
-        <a className="small-movie-card__link" href="">{film.title}</a>
-      </h3>
-    </article>
-  );
+  render() {
+    const {film, id, onMouseEnter, onMouseLeave, onClick} = this.props;
+
+    const handlerMouseEnter = () => {
+      this.setState({isPlaying: true});
+
+      if (onMouseEnter) {
+        onMouseEnter(film);
+      }
+    };
+
+    const handlerMouseLeave = () => {
+      this.setState({isPlaying: false});
+
+      onMouseLeave();
+    };
+
+    const handlerClick = (e) => {
+      e.preventDefault();
+      onClick(id);
+    };
+
+    return (
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseEnter={handlerMouseEnter}
+        onMouseLeave={handlerMouseLeave}
+        onClick={handlerClick}
+      >
+        <div className="small-movie-card__image">
+          <VideoPlayer src={film.src} poster={film.poster} width={280} height={175} isPlaying={this.state.isPlaying} />
+        </div>
+        <h3 className="small-movie-card__title" >
+          <a className="small-movie-card__link" href="">{film.title}</a>
+        </h3>
+      </article>
+    );
+  }
+
 };
 
 export default SmallMovieCard;

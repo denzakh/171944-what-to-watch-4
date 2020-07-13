@@ -42,7 +42,8 @@ const films = [{
   Production: `Paramount Pictures`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://vod-progressive.akamaized.net/exp=1594637829~acl=%2A%2F668109072.mp4%2A~hmac=34c161c5f4686c351403319a855e38b604e5ee718e9f69d86fa20949221e494b/vimeo-prod-skyfire-std-us/01/4679/7/198399657/668109072.mp4?filename=The+Godfather+-+Trailer+%281115%29.mp4`
 },
 {
   Title: `Knives Out`,
@@ -84,7 +85,8 @@ const films = [{
   Production: `Lionsgate`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 },
 {
   Title: `Parasite`,
@@ -127,7 +129,8 @@ const films = [{
   Production: `NEON`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 },
 {
   Title: `The Shawshank Redemption`,
@@ -170,7 +173,8 @@ const films = [{
   Production: `Columbia Pictures`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 },
 {
   Title: `Avengers: Endgame`,
@@ -211,7 +215,8 @@ const films = [{
   Production: `Marvel Studios`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 },
 {
   Title: `Inception`,
@@ -252,7 +257,8 @@ const films = [{
   Production: `Warner Bros. Pictures`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 },
 {
   Title: `Once Upon a Time... in Hollywood`,
@@ -293,7 +299,8 @@ const films = [{
   Production: `Columbia Pictures`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 },
 {
   Title: `Interstellar`,
@@ -334,7 +341,8 @@ const films = [{
   Production: `Paramount Pictures`,
   Website: `N/A`,
   Response: `True`,
-  href: `/`
+  href: `/`,
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 }];
 
 let getFilm = (filmSrc) => {
@@ -351,7 +359,8 @@ let getFilm = (filmSrc) => {
     bg: filmSrc.bg,
     bgcolor: filmSrc.bgcolor,
     avatar: filmSrc.avatar,
-    href: filmSrc.href
+    href: filmSrc.href,
+    src: filmSrc.src
   };
 };
 
