@@ -49,7 +49,7 @@ class SmallMovieCard extends PureComponent {
           <VideoPlayer
             src={film.src}
             poster={film.poster}
-            width={280}
+            width={210}
             height={175}
             isPlaying={this.state.isPlaying}
             isMuted={true}

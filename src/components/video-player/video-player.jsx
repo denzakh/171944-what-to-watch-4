@@ -55,5 +55,9 @@ export default VideoPlayer;
 
 VideoPlayer.propTypes = {
   src: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired
+  poster: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  isMuted: PropTypes.bool.isRequired
 };

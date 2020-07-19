@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer component should render VideoPlayer component markup 1`] = `
+<video
+  style={
+    Object {
+      "objectFit": "cover",
+    }
+  }
+/>
+`;
