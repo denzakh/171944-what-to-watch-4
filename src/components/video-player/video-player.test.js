@@ -8,7 +8,7 @@ describe(`VideoPlayer component`, ()=>{
     let film = films[0];
 
     function createNodeMock(element) {
-      if (element.type === 'video') {
+      if (element.type === `video`) {
         return {
           onplay: () => {},
           onpause: () => {},

@@ -13,11 +13,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="The Godfather"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3
@@ -40,11 +41,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Knives Out"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3
@@ -67,11 +69,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Parasite"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3
@@ -94,11 +97,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="The Shawshank Redemption"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3
@@ -121,11 +125,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Avengers: Endgame"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3
@@ -148,11 +153,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Inception"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3
@@ -175,11 +181,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Once Upon a Time... in Hollywood"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BOTg4ZTNkZmUtMzNlZi00YmFjLTk1MmUtNWQwNTM0YjcyNTNkXkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3
@@ -202,11 +209,12 @@ exports[`Card component should render Card component markup 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Interstellar"
-        height="175"
-        src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
-        width="280"
+      <video
+        style={
+          Object {
+            "objectFit": "cover",
+          }
+        }
       />
     </div>
     <h3

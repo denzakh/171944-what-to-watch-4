@@ -29,7 +29,9 @@ class SmallMovieCard extends PureComponent {
 
     const handlerMouseLeave = () => {
       this.setState({isPlaying: false});
-      clearTimeout(this._timerId);
+      if(this._timerId) {
+        clearTimeout(this._timerId);
+      }
       onMouseLeave();
     };
 

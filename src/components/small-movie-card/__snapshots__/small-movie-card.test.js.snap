@@ -10,11 +10,12 @@ exports[`Card component should render SmallMovieCard component markup 1`] = `
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="The Godfather"
-      height="175"
-      src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-      width="280"
+    <video
+      style={
+        Object {
+          "objectFit": "cover",
+        }
+      }
     />
   </div>
   <h3

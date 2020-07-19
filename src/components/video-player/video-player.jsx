@@ -12,19 +12,21 @@ class VideoPlayer extends PureComponent {
     const {isMuted, poster, src, width, height} = this.props;
     const video = this._videoRef.current;
 
-    if (isMuted) {
-      video.muted = true;
-    }
+    if(video) {
+      video.src = src;
+      video.poster = poster;
+      video.width = width;
+      video.height = height;
 
-    video.src = src;
-    video.poster = poster;
-    video.width = width;
-    video.height = height;
+      if (isMuted) {
+        video.muted = true;
+      }
+    }
   }
 
   componentDidUpdate(prevProps) {
     const video = this._videoRef.current;
-    const { src, isPlaying } = this.props;
+    const {src, isPlaying} = this.props;
 
     if (isPlaying !== prevProps.isPlaying) {
       if (isPlaying) {
@@ -44,7 +46,7 @@ class VideoPlayer extends PureComponent {
   render() {
     return <video ref={this._videoRef} style={{objectFit: `cover`}}></video>;
   }
-};
+}
 
 export default VideoPlayer;
 
