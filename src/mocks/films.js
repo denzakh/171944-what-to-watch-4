@@ -15,7 +15,7 @@ const films = [{
   Country: `USA`,
   Awards: `Won 3 Oscars. Another 26 wins & 30 nominations.`,
   Poster: `https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg`,
-  bg: `https://66.media.tumblr.com/9a9ee3ab320563f95e85c793e366053b/tumblr_nqrumn1CfN1rf1jvro1_1280.jpg`,
+  bg: `img/gf-bg.jpg`,
   bgcolor: `#dbd5c3`,
   avatar: `https://theotherboard.com/forum/uploads/profile/photo-1692.png`,
   Ratings: [
@@ -43,7 +43,7 @@ const films = [{
   Website: `N/A`,
   Response: `True`,
   href: `/`,
-  src: `https://vod-progressive.akamaized.net/exp=1594637829~acl=%2A%2F668109072.mp4%2A~hmac=34c161c5f4686c351403319a855e38b604e5ee718e9f69d86fa20949221e494b/vimeo-prod-skyfire-std-us/01/4679/7/198399657/668109072.mp4?filename=The+Godfather+-+Trailer+%281115%29.mp4`
+  src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 },
 {
   Title: `Knives Out`,

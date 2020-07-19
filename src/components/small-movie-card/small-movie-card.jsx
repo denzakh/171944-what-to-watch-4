@@ -8,22 +8,28 @@ class SmallMovieCard extends PureComponent {
     super(props);
 
     this.state = {isPlaying: false};
+    this._timerId = null;
   }
 
   render() {
     const {film, id, onMouseEnter, onMouseLeave, onClick} = this.props;
+    const startPlaying = () => this.setState({isPlaying: true});
 
     const handlerMouseEnter = () => {
-      this.setState({isPlaying: true});
-
-      if (onMouseEnter) {
-        onMouseEnter(film);
-      }
+      this._timerId = setTimeout(
+        () => {
+          startPlaying();
+          if (onMouseEnter) {
+            onMouseEnter(film);
+          }
+        },
+        1000
+      );
     };
 
     const handlerMouseLeave = () => {
       this.setState({isPlaying: false});
-
+      clearTimeout(this._timerId);
       onMouseLeave();
     };
 
@@ -40,7 +46,14 @@ class SmallMovieCard extends PureComponent {
         onClick={handlerClick}
       >
         <div className="small-movie-card__image">
-          <VideoPlayer src={film.src} poster={film.poster} width={280} height={175} isPlaying={this.state.isPlaying} />
+          <VideoPlayer
+            src={film.src}
+            poster={film.poster}
+            width={280}
+            height={175}
+            isPlaying={this.state.isPlaying}
+            isMuted={true}
+          />
         </div>
         <h3 className="small-movie-card__title" >
           <a className="small-movie-card__link" href="">{film.title}</a>
