@@ -20,9 +20,7 @@ class App extends PureComponent {
     let activeMoviePage = this.state.activeMoviePage;
 
     if (activeMoviePage) {
-      return (<MoviePage
-        film={activeMoviePage}
-      />);
+      return this._renderActiveMoviePage();
     } else {
       return (<Main
         promoFilm={this.props.promoFilm}
@@ -34,7 +32,11 @@ class App extends PureComponent {
 
   _renderActiveMoviePage() {
     if (this.state.activeMoviePage) {
-      return <MoviePage film={this.state.activeMoviePage} />;
+      return <MoviePage
+        film={this.state.activeMoviePage}
+        films={this.props.films}
+        setActiveMoviePage={this.setActiveMoviePage}
+      />;
     } else {
       return null;
     }

@@ -360,7 +360,8 @@ let getFilm = (filmSrc) => {
     bgcolor: filmSrc.bgcolor,
     avatar: filmSrc.avatar,
     href: filmSrc.href,
-    src: filmSrc.src
+    src: filmSrc.src,
+    runtime: filmSrc.Runtime
   };
 };
 
