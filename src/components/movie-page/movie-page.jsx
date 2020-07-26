@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import Tabs from "../tabs/tabs.jsx";
-import Tab from "../tabs/tabs.jsx";
 import TabOverview from "../tabs/tab-overview.jsx";
 import TabDetails from "../tabs/tab-details.jsx";
 import TabReviews from "../tabs/tab-reviews.jsx";
@@ -68,10 +67,8 @@ class MoviePage extends PureComponent {
           director={director}
           actors={actors}
         />;
-        break;
       case `Reviews`:
         return <TabReviews />;
-        break;
       default:
         return <TabOverview
           imdbRating={imdbRating}
@@ -81,7 +78,6 @@ class MoviePage extends PureComponent {
           actors={actors}
           plot={plot}
         />;
-        break;
     }
   }
 
@@ -204,8 +200,7 @@ class MoviePage extends PureComponent {
       </React.Fragment>
     );
   }
-
-};
+}
 
 export default MoviePage;
 
@@ -220,6 +215,7 @@ MoviePage.propTypes = {
     poster: PropTypes.string.isRequired,
     imdbRating: PropTypes.string.isRequired,
     imdbVotes: PropTypes.string.isRequired,
+    runtime: PropTypes.string.isRequired,
     bg: PropTypes.string,
     bgcolor: PropTypes.string,
     avatar: PropTypes.string

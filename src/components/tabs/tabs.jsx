@@ -13,13 +13,16 @@ const Tabs = (props) => {
             {Object.values(tabList).map((tabName) => (
               <li
                 className={`movie-nav__item ${activeTab === tabName && `movie-nav__item--active`}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onClick(tabName);
-                }}
                 key={tabName}
               >
-                <a href="#" className="movie-nav__link">{tabName}</a>
+                <a
+                  href="#"
+                  className="movie-nav__link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onClick(tabName);
+                  }}
+                >{tabName}</a>
               </li>
             ))}
           </ul>
@@ -32,6 +35,7 @@ const Tabs = (props) => {
 
 Tabs.propTypes = {
   tabList: PropTypes.array.isRequired,
+  activeTab: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
