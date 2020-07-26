@@ -33,8 +33,10 @@ class App extends PureComponent {
   }
 
   _renderActiveMoviePage() {
-    if(this.state.activeMoviePage) {
-      return <MoviePage film={this.state.activeMoviePage} />
+    if (this.state.activeMoviePage) {
+      return <MoviePage film={this.state.activeMoviePage} />;
+    } else {
+      return null;
     }
   }
 

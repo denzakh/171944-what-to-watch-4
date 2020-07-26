@@ -16,7 +16,7 @@ const withVideoPlayer = (Component) => {
     }
 
     componentWillUnmount() {
-      if(this.timerId) {
+      if (this.timerId) {
         clearTimeout(this.timerId);
       }
     }

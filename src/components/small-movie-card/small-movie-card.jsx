@@ -39,8 +39,7 @@ class SmallMovieCard extends PureComponent {
       </article>
     );
   }
-
-};
+}
 
 export default SmallMovieCard;
 
@@ -48,8 +47,12 @@ SmallMovieCard.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired
+    href: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired
   }).isRequired,
-  onClick: PropTypes.func
+  isPlaying: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
 };
 
