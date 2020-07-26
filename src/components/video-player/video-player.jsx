@@ -12,15 +12,8 @@ class VideoPlayer extends PureComponent {
     const {isMuted, poster, src, width, height} = this.props;
     const video = this._videoRef.current;
 
-    if(video) {
-      video.src = src;
-      video.poster = poster;
-      video.width = width;
-      video.height = height;
-
-      if (isMuted) {
-        video.muted = true;
-      }
+    if(video && isMuted) {
+      video.muted = true;
     }
   }
 
@@ -44,7 +37,17 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    return <video ref={this._videoRef} style={{objectFit: `cover`}}></video>;
+    const { src, poster, width, height } = this.props;
+    return <div className="small-movie-card__image">
+      <video
+        ref={this._videoRef}
+        style={{objectFit: `cover`}}
+        src={src}
+        poster={poster}
+        width={width}
+        height={height}
+      ></video>
+    </div>;
   }
 }
 

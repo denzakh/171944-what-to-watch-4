@@ -12,36 +12,23 @@ let film = films[0];
 
 describe(`VideoPlayer e2e`, ()=>{
 
-  it(`should isPlaying is false in props`, ()=>{
+  it(`test isPlaying props`, ()=>{
 
-    const wrapper = mount(
-        <VideoPlayer
-          src={film.src}
-          poster={film.poster}
-          width={210}
-          height={175}
-          isPlaying={false}
-          isMuted={false}
-        />
-    );
+    HTMLVideoElement.prototype.play = jest.fn(() => Promise.resolve());
+    const wrapper = mount(<VideoPlayer
+      src={film.src}
+      poster={film.poster}
+      width={210}
+      height={175}
+      isMuted={false}
+      isPlaying={false}
+    />);
 
-    expect(wrapper.props().isPlaying).toEqual(false);
-  });
+    expect(HTMLVideoElement.prototype.play).toHaveBeenCalledTimes(0);
+    wrapper.setProps({isPlaying: true});
+    expect(HTMLVideoElement.prototype.play).toHaveBeenCalledTimes(1);
 
-  it(`should isPlaying is true in props`, ()=>{
-
-    const wrapper = mount(
-        <VideoPlayer
-          src={film.src}
-          poster={film.poster}
-          width={210}
-          height={175}
-          isPlaying={true}
-          isMuted={false}
-        />
-    );
-
-    expect(wrapper.props().isPlaying).toEqual(true);
+    HTMLVideoElement.prototype.play.mockRestore();
   });
 });
 

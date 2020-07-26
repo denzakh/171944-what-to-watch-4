@@ -6,45 +6,21 @@ class SmallMovieCard extends PureComponent {
 
   constructor(props) {
     super(props);
-
-    this.state = {isPlaying: false};
-    this._timerId = null;
   }
 
   render() {
-    const {film, id, onMouseEnter, onMouseLeave, onClick} = this.props;
-    const startPlaying = () => this.setState({isPlaying: true});
-
-    const handlerMouseEnter = () => {
-      this._timerId = setTimeout(
-        () => {
-          startPlaying();
-          if (onMouseEnter) {
-            onMouseEnter(film);
-          }
-        },
-        1000
-      );
-    };
-
-    const handlerMouseLeave = () => {
-      this.setState({isPlaying: false});
-      if(this._timerId) {
-        clearTimeout(this._timerId);
-      }
-      onMouseLeave();
-    };
+    const {film, isPlaying, onMouseEnter, onMouseLeave, onClick} = this.props;
 
     const handlerClick = (e) => {
       e.preventDefault();
-      onClick(id);
+      onClick(film);
     };
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
-        onMouseEnter={handlerMouseEnter}
-        onMouseLeave={handlerMouseLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         onClick={handlerClick}
       >
         <div className="small-movie-card__image">
@@ -53,8 +29,8 @@ class SmallMovieCard extends PureComponent {
             poster={film.poster}
             width={210}
             height={175}
-            isPlaying={this.state.isPlaying}
             isMuted={true}
+            isPlaying={isPlaying}
           />
         </div>
         <h3 className="small-movie-card__title" >
@@ -74,9 +50,6 @@ SmallMovieCard.propTypes = {
     poster: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired
   }).isRequired,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
-  onClick: PropTypes.func,
-  id: PropTypes.string.isRequired
+  onClick: PropTypes.func
 };
 

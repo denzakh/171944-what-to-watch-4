@@ -17,11 +17,11 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    let id = this.state.activeMoviePage;
+    let activeMoviePage = this.state.activeMoviePage;
 
-    if (this.props.films[id]) {
+    if (activeMoviePage) {
       return (<MoviePage
-        film={this.props.films[id]}
+        film={activeMoviePage}
       />);
     } else {
       return (<Main
@@ -32,9 +32,15 @@ class App extends PureComponent {
     }
   }
 
-  setActiveMoviePage(id) {
+  _renderActiveMoviePage() {
+    if(this.state.activeMoviePage) {
+      return <MoviePage film={this.state.activeMoviePage} />
+    }
+  }
+
+  setActiveMoviePage(film) {
     this.setState({
-      activeMoviePage: id
+      activeMoviePage: film
     });
   }
 
@@ -46,7 +52,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/movie-page">
-            <MoviePage film={this.props.films[0]} />
+            {this._renderActiveMoviePage()}
           </Route>
         </Switch>
       </BrowserRouter>
