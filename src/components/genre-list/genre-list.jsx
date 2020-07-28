@@ -7,9 +7,9 @@ const GenreList = (props) => {
 
   const isActiveClass = (currentGenre, genreItem) => {
     if (currentGenre === genreItem) {
-      return `catalog__genres-item--active`;
+      return `catalog__genres-item catalog__genres-item--active`;
     }
-    return ``;
+    return `catalog__genres-item`;
   }
 
   return (
@@ -17,7 +17,7 @@ const GenreList = (props) => {
       {genreList.map((genreItem)=>{
         return (
           <li key={genreItem}
-            className={`catalog__genres-item ${isActiveClass(currentGenre, genreItem)}`}
+            className={isActiveClass(currentGenre, genreItem)}
           >
             <a href="#"
               className="catalog__genres-link"
@@ -27,7 +27,7 @@ const GenreList = (props) => {
               }}
             >{genreItem}</a>
           </li>
-        );
+        )
       })}
     </ul>
   );

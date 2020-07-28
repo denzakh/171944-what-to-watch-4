@@ -1,3 +1,5 @@
+import settings from "../settings/settings";
+
 export const getAllUniqueGenres = (filmList, limit) => {
   let allGenreList = [];
 
@@ -47,3 +49,28 @@ export const getRating = (num) => {
 
   return level;
 }
+
+export const getFilmsGenreLikeThis = (films, thisGenreList, limit, excludeFilm) => {
+
+  let filmsGenreLikeThis = films.filter((filmItem)=>{
+
+    if (filmItem !== excludeFilm) {
+      let isFilmLike = false;
+      let filmGenreList = filmItem.genreList;
+
+      thisGenreList.forEach((thisGenre)=>{
+        filmGenreList.forEach((filmGenre)=>{
+          if (thisGenre === filmGenre || thisGenre === settings.ALL_GENRES) {
+            isFilmLike = true;
+          }
+        });
+      });
+
+      return isFilmLike;
+    }
+    return false;
+  });
+
+  let result = filmsGenreLikeThis.filter((film, i)=>i < limit);
+  return result;
+};

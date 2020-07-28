@@ -5,12 +5,15 @@ import GenreList from "../genre-list/genre-list";
 import {getAllUniqueGenres} from "../../utils/common-utils";
 import {actionCreatorList} from "../../reducer";
 import {connect} from "react-redux";
+import {getFilmsGenreLikeThis} from "../../utils/common-utils";
+import settings from "../../settings/settings";
 
 const Main = (props) => {
-  const {title, genre, year, bg, poster} = props.promoFilm;
+  const {title, genreList, year, bg, poster} = props.promoFilm;
 
   const films = props.films;
   const setActiveMoviePage = props.setActiveMoviePage;
+  const filmsGenreSorted = getFilmsGenreLikeThis(films, [props.currentGenre], settings.MAIN_CARD_COUNT, props.promoFilm);
 
   return <div>
     <section className="movie-card">
@@ -45,7 +48,7 @@ const Main = (props) => {
           <div className="movie-card__desc">
             <h2 className="movie-card__title">{title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__genre">{genreList.join(`, `)}</span>
               <span className="movie-card__year">{year}</span>
             </p>
 
@@ -71,14 +74,18 @@ const Main = (props) => {
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenreList
-            genreList={getAllUniqueGenres(films, 9)}
-            setCurrentGenre={props.setCurrentGenre}
-            currentGenre={props.currentGenre}
-          />
-        )}
 
-        <CardList films={films} setActiveMoviePage={setActiveMoviePage} />
+        <GenreList
+          genreList={getAllUniqueGenres(films, settings.GENRES_LIST_COUNT)}
+          setCurrentGenre={props.setCurrentGenre}
+          currentGenre={props.currentGenre}
+        />
+
+        <CardList
+          films={filmsGenreSorted}
+          setActiveMoviePage={setActiveMoviePage}
+          setCurrentGenre={props.setCurrentGenre}
+        />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -111,7 +118,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentGenre(genre) {
-      dispatch(actionCreatorList.setCurrentGenre());
+      dispatch(actionCreatorList.setCurrentGenre(genre));
     }
   }
 }

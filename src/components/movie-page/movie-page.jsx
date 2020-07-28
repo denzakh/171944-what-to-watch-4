@@ -5,7 +5,8 @@ import TabOverview from "../tabs/tab-overview.jsx";
 import TabDetails from "../tabs/tab-details.jsx";
 import TabReviews from "../tabs/tab-reviews.jsx";
 import CardList from "../card-list/card-list";
-import {getRating} from "../../utils/common-utils";
+import {getRating, getFilmsGenreLikeThis} from "../../utils/common-utils";
+import settings from "../../settings/settings";
 
 const tabList = [`Overview`, `Details`, `Reviews`];
 
@@ -51,47 +52,21 @@ class MoviePage extends PureComponent {
   }
 
   render() {
-    const {title, year, genre, poster, bg, bgcolor, avatar} = this.props.film;
+    const {title, year, genreList, poster, bg, bgcolor, avatar} = this.props.film;
     const films = this.props.films;
     const setActiveMoviePage = this.props.setActiveMoviePage;
+    const filmsGenreLikeThis = getFilmsGenreLikeThis(films, genreList, settings.PAGE_CARD_COUNT);
 
-    const getFilmsGenreLikeThis = () => {
-      if (genre && films) {
-        const getGenreList = (genreString) => genreString.split(`, `);
-        const thisGenreList = getGenreList(genre);
-
-        let filmsGenreLikeThis = films.filter((currentFilm)=>{
-
-          if (currentFilm !== this.props.film) {
-            let isFilmLike = false;
-            let filmGenreList = getGenreList(currentFilm.genre);
-
-            thisGenreList.forEach((thisGenre)=>{
-              filmGenreList.forEach((filmGenre)=>{
-                if (thisGenre === filmGenre) {
-                  isFilmLike = true;
-                }
-              });
-            });
-
-            return isFilmLike;
-          }
-          return false;
-        });
-
-        filmsGenreLikeThis = filmsGenreLikeThis.filter((film, i)=>i < 4);
-
-        if (filmsGenreLikeThis.length) {
-          return (<section className="catalog catalog--like-this">
-            <h2 className="catalog__title">More like this</h2>
-            <CardList films={filmsGenreLikeThis} setActiveMoviePage={setActiveMoviePage} />
-          </section>);
-        } else {
-          return null;
-        }
+    const getSimularGenreCardList = (filmsGenreLikeThis) => {
+      if (filmsGenreLikeThis.length) {
+        return (<section className="catalog catalog--like-this">
+          <h2 className="catalog__title">More like this</h2>
+          <CardList films={filmsGenreLikeThis} setActiveMoviePage={setActiveMoviePage} />
+        </section>);
+      } else {
+        return null;
       }
-      return null;
-    };
+    }
 
     return (
       <React.Fragment>
@@ -119,7 +94,7 @@ class MoviePage extends PureComponent {
               <div className="movie-card__desc">
                 <h2 className="movie-card__title">{title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__genre">{genreList.join(`, `)}</span>
                   <span className="movie-card__year">{year}</span>
                 </p>
                 <div className="movie-card__buttons">
@@ -156,7 +131,7 @@ class MoviePage extends PureComponent {
           </div>
         </section>
         <div className="page-content">
-          {getFilmsGenreLikeThis()}
+          {getSimularGenreCardList(filmsGenreLikeThis)}
           <footer className="page-footer">
             <div className="logo">
               <a href="main.html" className="logo__link logo__link--light">
@@ -181,7 +156,7 @@ MoviePage.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
+    genreList: PropTypes.array.isRequired,
     director: PropTypes.string.isRequired,
     actors: PropTypes.string.isRequired,
     plot: PropTypes.string.isRequired,

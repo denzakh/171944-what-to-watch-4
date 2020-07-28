@@ -6,7 +6,11 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {reducer, initialState} from "./reducer";
 
-const store = createStore(reducer, initialState);
+const store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const rootElement = document.getElementById(`root`);
 ReactDOM.render(
