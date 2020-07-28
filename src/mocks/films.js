@@ -345,14 +345,17 @@ const films = [{
   src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 }];
 
-
+let getGenreList = (genreStr) => {
+  let genreArr = genreStr.split(`, `);
+  return genreArr;
+}
 
 let getFilm = (filmSrc) => {
   return {
     title: filmSrc.Title,
     year: filmSrc.Year,
     genre: filmSrc.Genre,
-    genreList: filmSrc.Genre.split(`, `).push(`All genres`),
+    genreList: getGenreList(filmSrc.Genre),
     director: filmSrc.Director,
     actors: filmSrc.Actors,
     plot: filmSrc.Plot,

@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CardList from "../card-list/card-list";
+import GenreList from "../genre-list/genre-list";
+import {getAllUniqueGenres} from "../../utils/common-utils";
+import {actionCreatorList} from "../../reducer";
+import {connect} from "react-redux";
 
 const Main = (props) => {
   const {title, genre, year, bg, poster} = props.promoFilm;
@@ -67,8 +71,12 @@ const Main = (props) => {
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-        {/*<GenreList currentGenre={} genreList={} setCurrentGenre={} />*/}
+          <GenreList
+            genreList={getAllUniqueGenres(films, 9)}
+            setCurrentGenre={props.setCurrentGenre}
+            currentGenre={props.currentGenre}
+          />
+        )}
 
         <CardList films={films} setActiveMoviePage={setActiveMoviePage} />
 
@@ -94,7 +102,23 @@ const Main = (props) => {
   </div>;
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    currentGenre: state.currentGenre
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrentGenre(genre) {
+      dispatch(actionCreatorList.setCurrentGenre());
+    }
+  }
+}
+
+export {Main};
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
 
 Main.propTypes = {
   promoFilm: PropTypes.shape({

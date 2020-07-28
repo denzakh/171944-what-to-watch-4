@@ -1,6 +1,6 @@
 export const initialState = {
   currentGenre: `All genres`,
-  films: []
+  currentFilms: []
 };
 
 // изменение фильтра по жанрам и получение списка фильмов в соответствии выбранным жанром.
@@ -11,7 +11,7 @@ export const actionTypeList = {
 }
 
 export const actionCreatorList = {
-  setGenre: (genre) => ({
+  setCurrentGenre: (genre) => ({
     type: actionTypeList.SET_GENRE,
     payload: genre
   }),
@@ -26,7 +26,7 @@ export const reducer = (state = initialState, action) => {
     case `SET_GENRE`:
       return {...state, currentGenre: action.payload}
     case `SET_FILMS`:
-      return {...state, films: action.payload}
+      return {...state, currentFilms: action.payload}
     default:
       return state
   }

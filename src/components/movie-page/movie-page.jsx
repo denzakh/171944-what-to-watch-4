@@ -5,6 +5,7 @@ import TabOverview from "../tabs/tab-overview.jsx";
 import TabDetails from "../tabs/tab-details.jsx";
 import TabReviews from "../tabs/tab-reviews.jsx";
 import CardList from "../card-list/card-list";
+import {getRating} from "../../utils/common-utils";
 
 const tabList = [`Overview`, `Details`, `Reviews`];
 
@@ -21,39 +22,6 @@ class MoviePage extends PureComponent {
     this.setState({
       activeTab: tabName,
     });
-  }
-
-  getRating(num) {
-    let level = `--`;
-
-    switch (Math.floor(+num)) {
-      case 0:
-      case 1:
-      case 2:
-        level = `Bad`;
-        break;
-      case 3:
-      case 4:
-        level = `Normal`;
-        break;
-      case 5:
-      case 6:
-      case 7:
-        level = `Good`;
-        break;
-      case 8:
-      case 9:
-        level = `Very good`;
-        break;
-      case 10:
-        level = `Awesome`;
-        break;
-      default:
-        level = `--`;
-        break;
-    }
-
-    return level;
   }
 
   renderTab() {
@@ -228,3 +196,4 @@ MoviePage.propTypes = {
   films: PropTypes.array.isRequired,
   setActiveMoviePage: PropTypes.func
 };
+
