@@ -42,7 +42,7 @@ class MoviePage extends PureComponent {
       default:
         return <TabOverview
           imdbRating={imdbRating}
-          ratingLevel={this.getRating(+imdbRating)}
+          ratingLevel={getRating(+imdbRating)}
           imdbVotes={imdbVotes}
           director={director}
           actors={actors}
