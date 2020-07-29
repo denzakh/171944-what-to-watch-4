@@ -9,9 +9,9 @@ export const getAllUniqueGenres = (filmList, limit) => {
 
   let genreSet = new Set(allGenreList);
   let genreList = Array.from(genreSet).sort();
-  genreList.unshift("All genres");
+  genreList.unshift(`All genres`);
 
-  if(limit) {
+  if (limit) {
     genreList.length = limit;
   }
   return genreList;
@@ -48,7 +48,7 @@ export const getRating = (num) => {
   }
 
   return level;
-}
+};
 
 export const getFilmsGenreLikeThis = (films, thisGenreList, limit, excludeFilm) => {
 

@@ -8,21 +8,25 @@ import {Provider} from "react-redux";
 import {reducer, initialState} from "../../reducer";
 
 const store = createStore(
-  reducer,
-  initialState
+    reducer,
+    initialState
 );
-
 
 describe(`Main component`, ()=>{
   it(`should render Main component markup`, () => {
     const tree = renderer.create(
-      <Provider store={store}>
-        <Main
-          promoFilm={films[0]}
-          films={films}
-        />
-      </Provider>
+        <Provider store={store}>
+          <Main
+            promoFilm={films[0]}
+            films={films}
+            currentGenre={`All genres`}
+            setCurrentGenre={()=>{}}
+            setActiveMoviePage={()=>{}}
+          />
+        </Provider>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
+
+

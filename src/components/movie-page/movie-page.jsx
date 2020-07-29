@@ -26,13 +26,13 @@ class MoviePage extends PureComponent {
   }
 
   renderTab() {
-    const {director, actors, imdbRating, imdbVotes, plot, runtime, genre, year} = this.props.film;
+    const {director, actors, imdbRating, imdbVotes, plot, runtime, genreList, year} = this.props.film;
 
     switch (this.state.activeTab) {
       case `Details`:
         return <TabDetails
           runtime={runtime}
-          genre={genre}
+          genreList={genreList}
           year={year}
           director={director}
           actors={actors}
@@ -55,18 +55,18 @@ class MoviePage extends PureComponent {
     const {title, year, genreList, poster, bg, bgcolor, avatar} = this.props.film;
     const films = this.props.films;
     const setActiveMoviePage = this.props.setActiveMoviePage;
-    const filmsGenreLikeThis = getFilmsGenreLikeThis(films, genreList, settings.PAGE_CARD_COUNT);
+    const simularGenreMovieList = getFilmsGenreLikeThis(films, genreList, settings.PAGE_CARD_COUNT);
 
-    const getSimularGenreCardList = (filmsGenreLikeThis) => {
-      if (filmsGenreLikeThis.length) {
+    const getSimularGenreCardList = (simularGenreInMovieList) => {
+      if (simularGenreMovieList.length) {
         return (<section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <CardList films={filmsGenreLikeThis} setActiveMoviePage={setActiveMoviePage} />
+          <CardList films={simularGenreInMovieList} setActiveMoviePage={setActiveMoviePage} />
         </section>);
       } else {
         return null;
       }
-    }
+    };
 
     return (
       <React.Fragment>
@@ -131,7 +131,7 @@ class MoviePage extends PureComponent {
           </div>
         </section>
         <div className="page-content">
-          {getSimularGenreCardList(filmsGenreLikeThis)}
+          {getSimularGenreCardList(simularGenreMovieList)}
           <footer className="page-footer">
             <div className="logo">
               <a href="main.html" className="logo__link logo__link--light">

@@ -10,7 +10,6 @@ import settings from "../../settings/settings";
 
 const Main = (props) => {
   const {title, genreList, year, bg, poster} = props.promoFilm;
-
   const films = props.films;
   const setActiveMoviePage = props.setActiveMoviePage;
   const filmsGenreSorted = getFilmsGenreLikeThis(films, [props.currentGenre], settings.MAIN_CARD_COUNT, props.promoFilm);
@@ -76,7 +75,7 @@ const Main = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenreList
-          genreList={getAllUniqueGenres(films, settings.GENRES_LIST_COUNT)}
+          allGenreList={getAllUniqueGenres(films, settings.GENRES_LIST_COUNT)}
           setCurrentGenre={props.setCurrentGenre}
           currentGenre={props.currentGenre}
         />
@@ -120,8 +119,8 @@ const mapDispatchToProps = (dispatch) => {
     setCurrentGenre(genre) {
       dispatch(actionCreatorList.setCurrentGenre(genre));
     }
-  }
-}
+  };
+};
 
 export {Main};
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
@@ -130,11 +129,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(Main);
 Main.propTypes = {
   promoFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
+    genreList: PropTypes.array.isRequired,
     year: PropTypes.string.isRequired,
     bg: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,
-  setActiveMoviePage: PropTypes.func
+  setActiveMoviePage: PropTypes.func,
+  currentGenre: PropTypes.string.isRequired,
+  setCurrentGenre: PropTypes.func
 };

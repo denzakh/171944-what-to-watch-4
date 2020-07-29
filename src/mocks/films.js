@@ -348,7 +348,7 @@ const films = [{
 let getGenreList = (genreStr) => {
   let genreArr = genreStr.split(`, `);
   return genreArr;
-}
+};
 
 let getFilm = (filmSrc) => {
   return {

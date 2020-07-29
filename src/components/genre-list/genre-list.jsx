@@ -1,23 +1,24 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 
 const GenreList = (props) => {
 
-  const {currentGenre, genreList, setCurrentGenre} = props;
+  const {allGenreList, setCurrentGenre} = props;
+  const activeGenre = props.currentGenre;
 
   const isActiveClass = (currentGenre, genreItem) => {
     if (currentGenre === genreItem) {
       return `catalog__genres-item catalog__genres-item--active`;
     }
     return `catalog__genres-item`;
-  }
+  };
 
   return (
     <ul className="catalog__genres-list">
-      {genreList.map((genreItem)=>{
+      {allGenreList.map((genreItem)=>{
         return (
           <li key={genreItem}
-            className={isActiveClass(currentGenre, genreItem)}
+            className={isActiveClass(activeGenre, genreItem)}
           >
             <a href="#"
               className="catalog__genres-link"
@@ -27,15 +28,15 @@ const GenreList = (props) => {
               }}
             >{genreItem}</a>
           </li>
-        )
+        );
       })}
     </ul>
   );
-}
+};
 
 GenreList.propTypes = {
   currentGenre: PropTypes.string,
-  genreList: PropTypes.arrayOf(
+  allGenreList: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
   setCurrentGenre: PropTypes.func

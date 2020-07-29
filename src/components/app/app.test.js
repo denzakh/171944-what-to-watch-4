@@ -11,8 +11,7 @@ const initialState = {
 };
 
 const mockStore = configureStore([]);
-const store = mockStore(initialState)
-
+const store = mockStore(initialState);
 
 describe(`App component`, ()=>{
   it(`should render App component markup`, () => {
@@ -21,6 +20,8 @@ describe(`App component`, ()=>{
           <App
             promoFilm={films[0]}
             films={films}
+            currentGenre={`All genres`}
+            setCurrentGenre={()=>{}}
           />
         </Provider>, {
           createNodeMock: () => {

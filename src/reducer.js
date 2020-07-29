@@ -8,7 +8,7 @@ export const initialState = {
 export const actionTypeList = {
   SET_GENRE: `SET_GENRE`,
   SET_FILMS: `SET_FILMS`
-}
+};
 
 export const actionCreatorList = {
   setCurrentGenre: (genre) => ({
@@ -19,15 +19,15 @@ export const actionCreatorList = {
     type: actionTypeList.SET_FILMS,
     payload: films
   })
-}
+};
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case `SET_GENRE`:
-      return {...state, currentGenre: action.payload}
+      return Object.assign({}, state, {currentGenre: action.payload});
     case `SET_FILMS`:
-      return {...state, currentFilms: action.payload}
+      return Object.assign({}, state, {currentFilms: action.payload});
     default:
-      return state
+      return state;
   }
-}
+};
