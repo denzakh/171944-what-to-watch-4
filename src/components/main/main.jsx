@@ -1,12 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CardList from "../card-list/card-list";
+import GenreList from "../genre-list/genre-list";
+import {getAllUniqueGenres} from "../../utils/common-utils";
+import {actionCreatorList} from "../../reducer";
+import {connect} from "react-redux";
+import {getFilmsGenreLikeThis} from "../../utils/common-utils";
+import settings from "../../settings/settings";
 
 const Main = (props) => {
-  const {title, genre, year, bg, poster} = props.promoFilm;
-
+  const {title, genreList, year, bg, poster} = props.promoFilm;
   const films = props.films;
   const setActiveMoviePage = props.setActiveMoviePage;
+  const filmsGenreSorted = getFilmsGenreLikeThis(films, [props.currentGenre], settings.MAIN_CARD_COUNT, props.promoFilm);
 
   return <div>
     <section className="movie-card">
@@ -41,7 +47,7 @@ const Main = (props) => {
           <div className="movie-card__desc">
             <h2 className="movie-card__title">{title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__genre">{genreList.join(`, `)}</span>
               <span className="movie-card__year">{year}</span>
             </p>
 
@@ -68,40 +74,17 @@ const Main = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <ul className="catalog__genres-list">
-          <li className="catalog__genres-item catalog__genres-item--active">
-            <a href="#" className="catalog__genres-link">All genres</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Comedies</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Crime</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Documentary</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Dramas</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Horror</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Kids & Family</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Romance</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Sci-Fi</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Thrillers</a>
-          </li>
-        </ul>
+        <GenreList
+          allGenreList={getAllUniqueGenres(films, settings.GENRES_LIST_COUNT)}
+          setCurrentGenre={props.setCurrentGenre}
+          currentGenre={props.currentGenre}
+        />
 
-        <CardList films={films} setActiveMoviePage={setActiveMoviePage} />
+        <CardList
+          films={filmsGenreSorted}
+          setActiveMoviePage={setActiveMoviePage}
+          setCurrentGenre={props.setCurrentGenre}
+        />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -125,16 +108,34 @@ const Main = (props) => {
   </div>;
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    currentGenre: state.currentGenre
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrentGenre(genre) {
+      dispatch(actionCreatorList.setCurrentGenre(genre));
+    }
+  };
+};
+
+export {Main};
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
 
 Main.propTypes = {
   promoFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
+    genreList: PropTypes.array.isRequired,
     year: PropTypes.string.isRequired,
     bg: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,
-  setActiveMoviePage: PropTypes.func
+  setActiveMoviePage: PropTypes.func,
+  currentGenre: PropTypes.string.isRequired,
+  setCurrentGenre: PropTypes.func
 };

@@ -64,9 +64,9 @@ class App extends PureComponent {
   }
 }
 
-export default App;
-
 App.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
 };
+
+export default App;

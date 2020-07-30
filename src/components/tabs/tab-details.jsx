@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const TabDetails = (props) => {
-  const {runtime, genre, year, director, actors} = props;
+  const {runtime, genreList, year, director, actors} = props;
   return (
     <React.Fragment>
       <div className="movie-card__text movie-card__row">
@@ -28,7 +28,7 @@ const TabDetails = (props) => {
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
             <span className="movie-card__details-value">
-              {genre.split(`, `).map((item)=>{
+              {genreList.map((item)=>{
                 return <React.Fragment key={item}>{item}<br /></React.Fragment>;
               })}
             </span>
@@ -45,7 +45,7 @@ const TabDetails = (props) => {
 
 TabDetails.propTypes = {
   runtime: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  genreList: PropTypes.array.isRequired,
   year: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
   actors: PropTypes.string.isRequired
