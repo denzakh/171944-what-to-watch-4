@@ -172,6 +172,6 @@ MoviePage.propTypes = {
   }).isRequired,
   films: PropTypes.array.isRequired,
   onActiveMoviePageChange: PropTypes.func,
-  limit: 4
+  limit: PropTypes.number.isRequired,
 };
 

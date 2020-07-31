@@ -1,10 +1,14 @@
 import {reducer, initialState, actionCreatorList} from "./reducer.js";
 import genres from "./mocks/genre-list.js";
+import films from "./mocks/films.js";
 
 it(`Should initial state change correctly`, () => {
   expect(reducer(undefined, {})).toEqual({
     currentGenre: `All genres`,
-    currentFilms: []
+    currentFilms: [],
+    promoFilm: films[0],
+    films,
+    showMainCardCount: 8
   });
 });
 

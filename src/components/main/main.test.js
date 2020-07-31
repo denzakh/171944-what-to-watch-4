@@ -12,16 +12,20 @@ const store = createStore(
     initialState
 );
 
+const promoFilm = films[0];
+
 describe(`Main component`, ()=>{
   it(`should render Main component markup`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <Main
-            promoFilm={films[0]}
+            promoFilm={promoFilm}
             films={films}
             currentGenre={`All genres`}
             onCurrentGenreChange={()=>{}}
             onActiveMoviePageChange={()=>{}}
+            onMainCardCountChange={()=>{}}
+            showMainCardCount={8}
           />
         </Provider>
     ).toJSON();

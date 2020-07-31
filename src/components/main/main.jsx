@@ -6,17 +6,18 @@ import {getAllUniqueGenres} from "../../utils/common-utils";
 import {actionCreatorList} from "../../reducer";
 import {connect} from "react-redux";
 import {getFilmsGenreLikeThis} from "../../utils/common-utils";
-import ShowMoreButton from "../show-more-button/show-more-button.jsx";
+import ShowMoreButton from "../show-more-button/show-more-button";
 
 const Main = (props) => {
+
   const {films, promoFilm, currentGenre, showMainCardCount, onActiveMoviePageChange, genresListCount} = props;
   const {title, genreList, year, bg, poster} = promoFilm;
 
   const filmsGenreSorted = getFilmsGenreLikeThis(films, promoFilm, [currentGenre], showMainCardCount);
 
   const renderMoreButton = () => {
-    return <ShowMoreButton onButtonClick={props.onMainCardCountChange} />
-  }
+    return <ShowMoreButton onButtonClick={props.onMainCardCountChange} />;
+  };
 
   return <div>
     <section className="movie-card">
@@ -152,5 +153,6 @@ Main.propTypes = {
   onCurrentGenreChange: PropTypes.func,
   onMainCardCountChange: PropTypes.func,
   showMainCardCount: PropTypes.number.isRequired,
-  genresListCount: PropTypes.number
+  genresListCount: PropTypes.number,
+  currentGenre: PropTypes.string.isRequired
 };

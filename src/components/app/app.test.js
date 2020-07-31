@@ -7,7 +7,10 @@ import {Provider} from "react-redux";
 
 const initialState = {
   currentGenre: `All genres`,
-  currentFilms: []
+  currentFilms: [],
+  promoFilm: films[0],
+  films,
+  showMainCardCount: 8
 };
 
 const mockStore = configureStore([]);

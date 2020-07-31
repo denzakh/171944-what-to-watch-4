@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import PropTypes from "prop-types";
 import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page";
 
@@ -32,7 +31,6 @@ class App extends PureComponent {
     if (this.state.activeMoviePage) {
       return <MoviePage
         film={this.state.activeMoviePage}
-        films={this.props.films}
         onActiveMoviePageChange={this.onActiveMoviePageChange}
       />;
     } else {

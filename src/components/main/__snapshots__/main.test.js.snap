@@ -241,17 +241,6 @@ exports[`Main component should render Main component markup 1`] = `
             Sci-Fi
           </a>
         </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Thriller
-          </a>
-        </li>
       </ul>
       <div
         className="catalog__movies-list"
@@ -508,16 +497,57 @@ exports[`Main component should render Main component markup 1`] = `
             </a>
           </h3>
         </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height={175}
+                poster="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+                style={
+                  Object {
+                    "objectFit": "cover",
+                  }
+                }
+                width={210}
+              />
+            </div>
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href=""
+            >
+              The Godfather 2
+            </a>
+          </h3>
+        </article>
       </div>
       <div
         className="catalog__more"
       >
-        <button
-          className="catalog__button"
-          type="button"
+        <div
+          className="catalog__more"
         >
-          Show more
-        </button>
+          <button
+            className="catalog__button"
+            onClick={[Function]}
+            type="button"
+          >
+            Show more
+          </button>
+        </div>
       </div>
     </section>
     <footer

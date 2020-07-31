@@ -6,7 +6,7 @@ export const initialState = {
   currentGenre: `All genres`,
   currentFilms: [],
   promoFilm: films[0],
-  films: films,
+  films,
   showMainCardCount: 8
 };
 
@@ -21,9 +21,9 @@ export const actionCreatorList = {
     type: actionTypeList.SET_GENRE,
     payload: genre
   }),
-  setFilms: (films) => ({
+  setFilms: (filmsArr) => ({
     type: actionTypeList.SET_FILMS,
-    payload: films
+    payload: filmsArr
   }),
   mainCardCountChange: () => ({
     type: actionTypeList.SHOW_MORE_CARD,
