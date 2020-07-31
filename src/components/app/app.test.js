@@ -18,10 +18,8 @@ describe(`App component`, ()=>{
     const tree = renderer.create(
         <Provider store={store}>
           <App
-            promoFilm={films[0]}
-            films={films}
             currentGenre={`All genres`}
-            setCurrentGenre={()=>{}}
+            onCurrentGenreChange={()=>{}}
           />
         </Provider>, {
           createNodeMock: () => {

@@ -8,7 +8,7 @@ Enzyme.configure({
 });
 
 it(`Should all tabs be pressed`, () => {
-  const setCurrentGenre = jest.fn();
+  const onCurrentGenreChange = jest.fn();
 
   const event = {
     preventDefault() {}
@@ -21,13 +21,13 @@ it(`Should all tabs be pressed`, () => {
       <GenreList
         currentGenre={currentGenre}
         allGenreList={allGenreList}
-        setCurrentGenre={setCurrentGenre}
+        onCurrentGenreChange={onCurrentGenreChange}
       />
   );
 
   const genreLinkList = genreListComponent.find(`.catalog__genres-link`);
   genreLinkList.forEach((link) => link.simulate(`click`, event));
-  expect(setCurrentGenre).toHaveBeenCalledTimes(3);
+  expect(onCurrentGenreChange).toHaveBeenCalledTimes(3);
 
-  expect(setCurrentGenre.mock.calls[2][0]).toEqual(`Action`);
+  expect(onCurrentGenreChange.mock.calls[2][0]).toEqual(`Action`);
 });

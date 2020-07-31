@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const GenreList = (props) => {
 
-  const {allGenreList, setCurrentGenre} = props;
+  const {allGenreList, onCurrentGenreChange} = props;
   const activeGenre = props.currentGenre;
 
-  const isActiveClass = (currentGenre, genreItem) => {
+  const setActiveClass = (currentGenre, genreItem) => {
     if (currentGenre === genreItem) {
       return `catalog__genres-item catalog__genres-item--active`;
     }
@@ -18,13 +18,13 @@ const GenreList = (props) => {
       {allGenreList.map((genreItem)=>{
         return (
           <li key={genreItem}
-            className={isActiveClass(activeGenre, genreItem)}
+            className={setActiveClass(activeGenre, genreItem)}
           >
             <a href="#"
               className="catalog__genres-link"
               onClick={(e)=>{
                 e.preventDefault();
-                setCurrentGenre(genreItem);
+                onCurrentGenreChange(genreItem);
               }}
             >{genreItem}</a>
           </li>
@@ -39,7 +39,7 @@ GenreList.propTypes = {
   allGenreList: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
-  setCurrentGenre: PropTypes.func
+  onCurrentGenreChange: PropTypes.func
 };
 
 export default GenreList;

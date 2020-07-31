@@ -9,7 +9,7 @@ it(`Should initial state change correctly`, () => {
 });
 
 it(`Should initial state change correctly`, () => {
-  const action = actionCreatorList.setCurrentGenre(genres[1]);
+  const action = actionCreatorList.onCurrentGenreChange(genres[1]);
   const newState = Object.assign({}, initialState, {currentGenre: genres[1]});
   expect(reducer(initialState, action)).toEqual(newState);
 });

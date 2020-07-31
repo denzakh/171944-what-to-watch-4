@@ -1,24 +1,35 @@
+import films from "./mocks/films";
+
+const MAIN_CARD_COUNT = 8;
+
 export const initialState = {
   currentGenre: `All genres`,
-  currentFilms: []
+  currentFilms: [],
+  promoFilm: films[0],
+  films: films,
+  showMainCardCount: 8
 };
-
-// изменение фильтра по жанрам и получение списка фильмов в соответствии выбранным жанром.
 
 export const actionTypeList = {
   SET_GENRE: `SET_GENRE`,
-  SET_FILMS: `SET_FILMS`
+  SET_FILMS: `SET_FILMS`,
+  SHOW_MORE_CARD: `SHOW_MORE_CARD`
 };
 
 export const actionCreatorList = {
-  setCurrentGenre: (genre) => ({
+  onCurrentGenreChange: (genre) => ({
     type: actionTypeList.SET_GENRE,
     payload: genre
   }),
   setFilms: (films) => ({
     type: actionTypeList.SET_FILMS,
     payload: films
+  }),
+  mainCardCountChange: () => ({
+    type: actionTypeList.SHOW_MORE_CARD,
+    payload: MAIN_CARD_COUNT
   })
+
 };
 
 export const reducer = (state = initialState, action) => {
@@ -27,6 +38,8 @@ export const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {currentGenre: action.payload});
     case `SET_FILMS`:
       return Object.assign({}, state, {currentFilms: action.payload});
+    case `SHOW_MORE_CARD`:
+      return Object.assign({}, state, {showMainCardCount: state.showMainCardCount + action.payload});
     default:
       return state;
   }

@@ -9,7 +9,7 @@ describe(`MoviePage component`, ()=>{
         <MoviePage
           film={films[0]}
           films={[]}
-          setActiveMoviePage={()=>{}}
+          onActiveMoviePageChange={()=>{}}
         />
     ).toJSON();
     expect(tree).toMatchSnapshot();

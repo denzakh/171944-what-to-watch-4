@@ -6,7 +6,6 @@ import TabDetails from "../tabs/tab-details.jsx";
 import TabReviews from "../tabs/tab-reviews.jsx";
 import CardList from "../card-list/card-list";
 import {getRating, getFilmsGenreLikeThis} from "../../utils/common-utils";
-import settings from "../../settings/settings";
 
 const tabList = [`Overview`, `Details`, `Reviews`];
 
@@ -53,15 +52,14 @@ class MoviePage extends PureComponent {
 
   render() {
     const {title, year, genreList, poster, bg, bgcolor, avatar} = this.props.film;
-    const films = this.props.films;
-    const setActiveMoviePage = this.props.setActiveMoviePage;
-    const simularGenreMovieList = getFilmsGenreLikeThis(films, genreList, settings.PAGE_CARD_COUNT);
+    const {films, film, onActiveMoviePageChange, limit} = this.props;
+    const simularGenreMovieList = getFilmsGenreLikeThis(films, film, genreList, limit);
 
     const getSimularGenreCardList = (simularGenreInMovieList) => {
       if (simularGenreMovieList.length) {
         return (<section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <CardList films={simularGenreInMovieList} setActiveMoviePage={setActiveMoviePage} />
+          <CardList films={simularGenreInMovieList} onActiveMoviePageChange={onActiveMoviePageChange} />
         </section>);
       } else {
         return null;
@@ -150,6 +148,10 @@ class MoviePage extends PureComponent {
   }
 }
 
+MoviePage.defaultProps = {
+  limit: 4
+};
+
 export default MoviePage;
 
 MoviePage.propTypes = {
@@ -169,6 +171,7 @@ MoviePage.propTypes = {
     avatar: PropTypes.string
   }).isRequired,
   films: PropTypes.array.isRequired,
-  setActiveMoviePage: PropTypes.func
+  onActiveMoviePageChange: PropTypes.func,
+  limit: 4
 };
 

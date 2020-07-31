@@ -6,13 +6,17 @@ import {getAllUniqueGenres} from "../../utils/common-utils";
 import {actionCreatorList} from "../../reducer";
 import {connect} from "react-redux";
 import {getFilmsGenreLikeThis} from "../../utils/common-utils";
-import settings from "../../settings/settings";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 
 const Main = (props) => {
-  const {title, genreList, year, bg, poster} = props.promoFilm;
-  const films = props.films;
-  const setActiveMoviePage = props.setActiveMoviePage;
-  const filmsGenreSorted = getFilmsGenreLikeThis(films, [props.currentGenre], settings.MAIN_CARD_COUNT, props.promoFilm);
+  const {films, promoFilm, currentGenre, showMainCardCount, onActiveMoviePageChange, genresListCount} = props;
+  const {title, genreList, year, bg, poster} = promoFilm;
+
+  const filmsGenreSorted = getFilmsGenreLikeThis(films, promoFilm, [currentGenre], showMainCardCount);
+
+  const renderMoreButton = () => {
+    return <ShowMoreButton onButtonClick={props.onMainCardCountChange} />
+  }
 
   return <div>
     <section className="movie-card">
@@ -75,19 +79,18 @@ const Main = (props) => {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <GenreList
-          allGenreList={getAllUniqueGenres(films, settings.GENRES_LIST_COUNT)}
-          setCurrentGenre={props.setCurrentGenre}
+          allGenreList={getAllUniqueGenres(films, genresListCount)}
+          onCurrentGenreChange={props.onCurrentGenreChange}
           currentGenre={props.currentGenre}
         />
 
         <CardList
           films={filmsGenreSorted}
-          setActiveMoviePage={setActiveMoviePage}
-          setCurrentGenre={props.setCurrentGenre}
+          onActiveMoviePageChange={onActiveMoviePageChange}
         />
 
         <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
+          {renderMoreButton()}
         </div>
       </section>
 
@@ -108,16 +111,26 @@ const Main = (props) => {
   </div>;
 };
 
+Main.defaultProps = {
+  genresListCount: 8
+};
+
 const mapStateToProps = (state) => {
   return {
-    currentGenre: state.currentGenre
+    currentGenre: state.currentGenre,
+    showMainCardCount: state.showMainCardCount,
+    promoFilm: state.promoFilm,
+    films: state.films
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCurrentGenre(genre) {
-      dispatch(actionCreatorList.setCurrentGenre(genre));
+    onCurrentGenreChange(genre) {
+      dispatch(actionCreatorList.onCurrentGenreChange(genre));
+    },
+    onMainCardCountChange() {
+      dispatch(actionCreatorList.setMainCardCountChange());
     }
   };
 };
@@ -135,7 +148,9 @@ Main.propTypes = {
     poster: PropTypes.string.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,
-  setActiveMoviePage: PropTypes.func,
-  currentGenre: PropTypes.string.isRequired,
-  setCurrentGenre: PropTypes.func
+  onActiveMoviePageChange: PropTypes.func,
+  onCurrentGenreChange: PropTypes.func,
+  onMainCardCountChange: PropTypes.func,
+  showMainCardCount: PropTypes.number.isRequired,
+  genresListCount: PropTypes.number
 };

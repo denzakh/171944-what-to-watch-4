@@ -20,8 +20,8 @@ describe(`Main component`, ()=>{
             promoFilm={films[0]}
             films={films}
             currentGenre={`All genres`}
-            setCurrentGenre={()=>{}}
-            setActiveMoviePage={()=>{}}
+            onCurrentGenreChange={()=>{}}
+            onActiveMoviePageChange={()=>{}}
           />
         </Provider>
     ).toJSON();
