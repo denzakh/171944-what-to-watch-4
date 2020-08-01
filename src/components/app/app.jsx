@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import PropTypes from "prop-types";
 import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page";
 
@@ -13,7 +12,7 @@ class App extends PureComponent {
       activeMoviePage: null
     };
 
-    this.setActiveMoviePage = this.setActiveMoviePage.bind(this);
+    this.onActiveMoviePageChange = this.onActiveMoviePageChange.bind(this);
   }
 
   _renderApp() {
@@ -23,9 +22,7 @@ class App extends PureComponent {
       return this._renderActiveMoviePage();
     } else {
       return (<Main
-        promoFilm={this.props.promoFilm}
-        films={this.props.films}
-        setActiveMoviePage={this.setActiveMoviePage}
+        onActiveMoviePageChange={this.onActiveMoviePageChange}
       />);
     }
   }
@@ -33,16 +30,14 @@ class App extends PureComponent {
   _renderActiveMoviePage() {
     if (this.state.activeMoviePage) {
       return <MoviePage
-        film={this.state.activeMoviePage}
-        films={this.props.films}
-        setActiveMoviePage={this.setActiveMoviePage}
+        onActiveMoviePageChange={this.onActiveMoviePageChange}
       />;
     } else {
       return null;
     }
   }
 
-  setActiveMoviePage(film) {
+  onActiveMoviePageChange(film) {
     this.setState({
       activeMoviePage: film
     });
@@ -63,10 +58,5 @@ class App extends PureComponent {
     );
   }
 }
-
-App.propTypes = {
-  promoFilm: PropTypes.object.isRequired,
-  films: PropTypes.array.isRequired,
-};
 
 export default App;

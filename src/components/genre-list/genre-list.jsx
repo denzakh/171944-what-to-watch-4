@@ -6,7 +6,7 @@ const GenreList = (props) => {
   const {allGenreList, setCurrentGenre} = props;
   const activeGenre = props.currentGenre;
 
-  const isActiveClass = (currentGenre, genreItem) => {
+  const setActiveClass = (currentGenre, genreItem) => {
     if (currentGenre === genreItem) {
       return `catalog__genres-item catalog__genres-item--active`;
     }
@@ -18,7 +18,7 @@ const GenreList = (props) => {
       {allGenreList.map((genreItem)=>{
         return (
           <li key={genreItem}
-            className={isActiveClass(activeGenre, genreItem)}
+            className={setActiveClass(activeGenre, genreItem)}
           >
             <a href="#"
               className="catalog__genres-link"

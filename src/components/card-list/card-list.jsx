@@ -19,7 +19,7 @@ class CardList extends PureComponent {
           return (<SmallMovieCardWrapped
             key={film.title}
             film={film}
-            onClick={this.props.setActiveMoviePage} />);
+            onClick={this.props.onActiveMoviePageChange} />);
         })}
       </div>
     );
@@ -30,5 +30,5 @@ export default CardList;
 
 CardList.propTypes = {
   films: PropTypes.array.isRequired,
-  setActiveMoviePage: PropTypes.func
+  onActiveMoviePageChange: PropTypes.func
 };

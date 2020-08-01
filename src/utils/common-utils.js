@@ -50,7 +50,7 @@ export const getRating = (num) => {
   return level;
 };
 
-export const getFilmsGenreLikeThis = (films, thisGenreList, limit, excludeFilm) => {
+export const getFilmsGenreLikeThis = (films, excludeFilm, thisGenreList, limit = films.length) => {
 
   let filmsGenreLikeThis = films.filter((filmItem)=>{
 

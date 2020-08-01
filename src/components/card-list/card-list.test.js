@@ -7,7 +7,7 @@ import films from "../../mocks/films";
 describe(`Card component`, ()=>{
   it(`should render Card component markup`, () => {
     const tree = renderer.create(
-        <CardList films={films} setActiveMoviePage={()=>{}} />
+        <CardList films={films} onActiveMoviePageChange={()=>{}} />
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });
