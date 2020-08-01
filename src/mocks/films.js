@@ -192,6 +192,8 @@ const films = [
     Country: `USA`,
     Awards: `Nominated for 1 Oscar. Another 64 wins & 104 nominations.`,
     Poster: `https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg`,
+    bg: `https://www.pdvg.it/wp-content/uploads/2019/03/avengers-endgame-poster-pdvg.jpg`,
+    bgcolor: `#C596CD`,
     Ratings: [
       {
         Source: `Internet Movie Database`,

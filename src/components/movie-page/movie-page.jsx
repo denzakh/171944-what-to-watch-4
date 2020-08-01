@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import Tabs from "../tabs/tabs.jsx";
 import TabOverview from "../tabs/tab-overview.jsx";
@@ -152,7 +153,14 @@ MoviePage.defaultProps = {
   limit: 4
 };
 
-export default MoviePage;
+const mapStateToProps = (state) => {
+  return {
+    films: state.films
+  };
+};
+
+export {MoviePage};
+export default connect(mapStateToProps)(MoviePage);
 
 MoviePage.propTypes = {
   film: PropTypes.shape({
