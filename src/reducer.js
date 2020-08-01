@@ -7,7 +7,7 @@ export const initialState = {
   currentFilms: [],
   promoFilm: films[0],
   films,
-  showMainCardCount: 8
+  showMainCardCount: MAIN_CARD_COUNT
 };
 
 export const actionTypeList = {
@@ -17,7 +17,7 @@ export const actionTypeList = {
 };
 
 export const actionCreatorList = {
-  onCurrentGenreChange: (genre) => ({
+  setCurrentGenre: (genre) => ({
     type: actionTypeList.SET_GENRE,
     payload: genre
   }),
@@ -25,7 +25,7 @@ export const actionCreatorList = {
     type: actionTypeList.SET_FILMS,
     payload: filmsArr
   }),
-  mainCardCountChange: () => ({
+  toChangeMainCardCount: () => ({
     type: actionTypeList.SHOW_MORE_CARD,
     payload: MAIN_CARD_COUNT
   })
@@ -34,11 +34,11 @@ export const actionCreatorList = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `SET_GENRE`:
-      return Object.assign({}, state, {currentGenre: action.payload});
-    case `SET_FILMS`:
+    case actionTypeList.SET_GENRE:
+      return Object.assign({}, state, {currentGenre: action.payload, showMainCardCount: MAIN_CARD_COUNT});
+    case actionTypeList.SET_FILMS:
       return Object.assign({}, state, {currentFilms: action.payload});
-    case `SHOW_MORE_CARD`:
+    case actionTypeList.SHOW_MORE_CARD:
       return Object.assign({}, state, {showMainCardCount: state.showMainCardCount + action.payload});
     default:
       return state;

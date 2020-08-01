@@ -22,9 +22,9 @@ describe(`Main component`, ()=>{
             promoFilm={promoFilm}
             films={films}
             currentGenre={`All genres`}
-            onCurrentGenreChange={()=>{}}
+            setCurrentGenre={()=>{}}
             onActiveMoviePageChange={()=>{}}
-            onMainCardCountChange={()=>{}}
+            toChangeMainCardCount={()=>{}}
             showMainCardCount={8}
           />
         </Provider>

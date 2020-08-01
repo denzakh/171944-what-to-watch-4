@@ -10,7 +10,7 @@ describe(`Main Snapshot`, () => {
           <GenreList
             currentGenre={`All genres`}
             allGenreList={allGenreList}
-            onCurrentGenreChange={()=>{}}
+            setCurrentGenre={()=>{}}
           />)
       .toJSON();
 

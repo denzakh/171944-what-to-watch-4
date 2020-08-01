@@ -22,7 +22,7 @@ describe(`App component`, ()=>{
         <Provider store={store}>
           <App
             currentGenre={`All genres`}
-            onCurrentGenreChange={()=>{}}
+            setCurrentGenre={()=>{}}
           />
         </Provider>, {
           createNodeMock: () => {

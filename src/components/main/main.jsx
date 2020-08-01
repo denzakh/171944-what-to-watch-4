@@ -13,10 +13,14 @@ const Main = (props) => {
   const {films, promoFilm, currentGenre, showMainCardCount, onActiveMoviePageChange, genresListCount} = props;
   const {title, genreList, year, bg, poster} = promoFilm;
 
-  const filmsGenreSorted = getFilmsGenreLikeThis(films, promoFilm, [currentGenre], showMainCardCount);
+  const filmsGenreSorted = getFilmsGenreLikeThis(films, promoFilm, [currentGenre]);
+  const filmsGenreSortedShow = filmsGenreSorted.filter((film, i)=>i < showMainCardCount);
 
   const renderMoreButton = () => {
-    return <ShowMoreButton onButtonClick={props.onMainCardCountChange} />;
+    if (showMainCardCount < filmsGenreSorted.length) {
+      return <ShowMoreButton onButtonClick={props.toChangeMainCardCount} />;
+    }
+    return null;
   };
 
   return <div>
@@ -81,12 +85,12 @@ const Main = (props) => {
 
         <GenreList
           allGenreList={getAllUniqueGenres(films, genresListCount)}
-          onCurrentGenreChange={props.onCurrentGenreChange}
+          setCurrentGenre={props.setCurrentGenre}
           currentGenre={props.currentGenre}
         />
 
         <CardList
-          films={filmsGenreSorted}
+          films={filmsGenreSortedShow}
           onActiveMoviePageChange={onActiveMoviePageChange}
         />
 
@@ -127,11 +131,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onCurrentGenreChange(genre) {
-      dispatch(actionCreatorList.onCurrentGenreChange(genre));
+    setCurrentGenre(genre) {
+      dispatch(actionCreatorList.setCurrentGenre(genre));
     },
-    onMainCardCountChange() {
-      dispatch(actionCreatorList.setMainCardCountChange());
+    toChangeMainCardCount() {
+      dispatch(actionCreatorList.toChangeMainCardCount());
     }
   };
 };
@@ -150,8 +154,8 @@ Main.propTypes = {
   }).isRequired,
   films: PropTypes.array.isRequired,
   onActiveMoviePageChange: PropTypes.func,
-  onCurrentGenreChange: PropTypes.func,
-  onMainCardCountChange: PropTypes.func,
+  setCurrentGenre: PropTypes.func,
+  toChangeMainCardCount: PropTypes.func,
   showMainCardCount: PropTypes.number.isRequired,
   genresListCount: PropTypes.number,
   currentGenre: PropTypes.string.isRequired
