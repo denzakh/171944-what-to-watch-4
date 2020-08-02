@@ -19,9 +19,9 @@ it(`Should all tabs be pressed`, () => {
 
   const genreListComponent = shallow(
       <GenreList
-        currentGenre={currentGenre}
+        activeItem={currentGenre}
         allGenreList={allGenreList}
-        setCurrentGenre={setCurrentGenre}
+        setActiveItem={setCurrentGenre}
       />
   );
 

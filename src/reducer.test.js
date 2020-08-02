@@ -5,6 +5,7 @@ import films from "./mocks/films.js";
 it(`Should initial state change correctly`, () => {
   expect(reducer(undefined, {})).toEqual({
     currentGenre: `All genres`,
+    activeMoviePage: null,
     currentFilms: [],
     promoFilm: films[0],
     films,

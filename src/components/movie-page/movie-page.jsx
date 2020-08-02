@@ -7,17 +7,15 @@ import TabDetails from "../tabs/tab-details.jsx";
 import TabReviews from "../tabs/tab-reviews.jsx";
 import CardList from "../card-list/card-list";
 import {getRating, getFilmsGenreLikeThis} from "../../utils/common-utils";
-import withActiveItem from "../../hocs/with-active-item/with-active-item";
 
 const tabList = [`Overview`, `Details`, `Reviews`];
-const TabsWrapped = withActiveItem(Tabs, tabList[0]);
 
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeTab: null
+      activeTab: tabList[0]
     };
 
     this.handleTabClick = this.handleTabClick.bind(this);
@@ -123,13 +121,13 @@ class MoviePage extends PureComponent {
               <div className="movie-card__poster movie-card__poster--big">
                 <img src={poster} alt={title} width={218} height={327} />
               </div>
-              <TabsWrapped
+              <Tabs
                 tabList={tabList}
                 activeItem={this.state.activeTab}
-                toChangeActiveItem={this.handleTabClick}
+                setActiveItem={this.handleTabClick}
               >
                 {this.renderTab()}
-              </TabsWrapped>
+              </Tabs>
             </div>
           </div>
         </section>

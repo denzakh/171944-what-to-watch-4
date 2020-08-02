@@ -20,8 +20,8 @@ it(`Should all tabs be pressed`, () => {
   const tabsComponent = shallow(
       <Tabs
         tabList={tabList}
-        activeTab={activeTab}
-        onClick={onClick}
+        activeItem={activeTab}
+        setActiveItem={onClick}
       >
         <div className="children-component" />;
       </Tabs>

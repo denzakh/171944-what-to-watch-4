@@ -8,9 +8,9 @@ describe(`Main Snapshot`, () => {
     const tree = renderer
       .create(
           <GenreList
-            currentGenre={`All genres`}
+            cactiveItem={`All genres`}
             allGenreList={allGenreList}
-            setCurrentGenre={()=>{}}
+            setActiveItem={()=>{}}
           />)
       .toJSON();
 

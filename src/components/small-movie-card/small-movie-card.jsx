@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import VideoPlayer from "../video-player/video-player.jsx";
 
@@ -32,7 +32,7 @@ const SmallMovieCard = (props) => {
       </h3>
     </article>
   );
-}
+};
 
 export default SmallMovieCard;
 
