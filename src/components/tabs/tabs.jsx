@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Tabs = (props) => {
 
-  const {tabList, activeTab, onClick, children} = props;
+  const {tabList, activeItem, setActiveItem, children} = props;
 
   return (
     <React.Fragment>
@@ -12,7 +12,7 @@ const Tabs = (props) => {
           <ul className="movie-nav__list">
             {Object.values(tabList).map((tabName) => (
               <li
-                className={`movie-nav__item ${activeTab === tabName && `movie-nav__item--active`}`}
+                className={`movie-nav__item ${activeItem === tabName && `movie-nav__item--active`}`}
                 key={tabName}
               >
                 <a
@@ -20,7 +20,7 @@ const Tabs = (props) => {
                   className="movie-nav__link"
                   onClick={(e) => {
                     e.preventDefault();
-                    onClick(tabName);
+                    setActiveItem(tabName);
                   }}
                 >{tabName}</a>
               </li>
@@ -35,8 +35,8 @@ const Tabs = (props) => {
 
 Tabs.propTypes = {
   tabList: PropTypes.array.isRequired,
-  activeTab: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  activeItem: PropTypes.string.isRequired,
+  setActiveItem: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
