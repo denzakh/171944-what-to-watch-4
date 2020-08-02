@@ -2,43 +2,36 @@ import React, {PureComponent} from "react";
 import PropTypes from 'prop-types';
 import VideoPlayer from "../video-player/video-player.jsx";
 
-class SmallMovieCard extends PureComponent {
+const SmallMovieCard = (props) => {
+  const {film, isPlaying, onMouseEnter, onMouseLeave, onClick} = props;
 
-  constructor(props) {
-    super(props);
-  }
+  const handlerClick = (e) => {
+    e.preventDefault();
+    onClick(film);
+  };
 
-  render() {
-    const {film, isPlaying, onMouseEnter, onMouseLeave, onClick} = this.props;
-
-    const handlerClick = (e) => {
-      e.preventDefault();
-      onClick(film);
-    };
-
-    return (
-      <article
-        className="small-movie-card catalog__movies-card"
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onClick={handlerClick}
-      >
-        <div className="small-movie-card__image">
-          <VideoPlayer
-            src={film.src}
-            poster={film.poster}
-            width={210}
-            height={175}
-            isMuted={true}
-            isPlaying={isPlaying}
-          />
-        </div>
-        <h3 className="small-movie-card__title" >
-          <a className="small-movie-card__link" href="">{film.title}</a>
-        </h3>
-      </article>
-    );
-  }
+  return (
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onClick={handlerClick}
+    >
+      <div className="small-movie-card__image">
+        <VideoPlayer
+          src={film.src}
+          poster={film.poster}
+          width={210}
+          height={175}
+          isMuted={true}
+          isPlaying={isPlaying}
+        />
+      </div>
+      <h3 className="small-movie-card__title" >
+        <a className="small-movie-card__link" href="">{film.title}</a>
+      </h3>
+    </article>
+  );
 }
 
 export default SmallMovieCard;

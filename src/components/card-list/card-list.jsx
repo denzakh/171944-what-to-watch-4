@@ -5,13 +5,8 @@ import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
 
 const SmallMovieCardWrapped = withVideoPlayer(SmallMovieCard);
 
-class CardList extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const films = this.props.films;
+const CardList = (props) => {
+    const films = props.films;
 
     return (
       <div className="catalog__movies-list">
@@ -19,11 +14,11 @@ class CardList extends PureComponent {
           return (<SmallMovieCardWrapped
             key={film.title}
             film={film}
-            onClick={this.props.onActiveMoviePageChange} />);
+            onClick={props.onActiveMoviePageChange} />);
         })}
       </div>
     );
-  }
+
 }
 
 export default CardList;
