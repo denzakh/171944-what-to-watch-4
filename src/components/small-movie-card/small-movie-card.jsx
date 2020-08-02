@@ -18,14 +18,7 @@ const SmallMovieCard = (props) => {
       onClick={handlerClick}
     >
       <div className="small-movie-card__image">
-        <VideoPlayer
-          src={film.src}
-          poster={film.poster}
-          width={210}
-          height={175}
-          isMuted={true}
-          isPlaying={isPlaying}
-        />
+        {props.children}
       </div>
       <h3 className="small-movie-card__title" >
         <a className="small-movie-card__link" href="">{film.title}</a>

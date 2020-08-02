@@ -14,7 +14,12 @@ const CardList = (props) => {
         return (<SmallMovieCardWrapped
           key={film.title}
           film={film}
-          onClick={setActiveItem} />);
+          onClick={setActiveItem}
+          src={film.src}
+          poster={film.poster}
+          width={210}
+          height={175}
+        />)
       })}
     </div>
   );
