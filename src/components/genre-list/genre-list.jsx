@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const GenreList = (props) => {
-
-  const {allGenreList, setCurrentGenre} = props;
-  const activeGenre = props.currentGenre;
+  const {allGenreList, setActiveItem, activeItem} = props;
 
   const setActiveClass = (currentGenre, genreItem) => {
     if (currentGenre === genreItem) {
@@ -18,13 +16,13 @@ const GenreList = (props) => {
       {allGenreList.map((genreItem)=>{
         return (
           <li key={genreItem}
-            className={setActiveClass(activeGenre, genreItem)}
+            className={setActiveClass(activeItem, genreItem)}
           >
             <a href="#"
               className="catalog__genres-link"
               onClick={(e)=>{
                 e.preventDefault();
-                setCurrentGenre(genreItem);
+                setActiveItem(genreItem);
               }}
             >{genreItem}</a>
           </li>
@@ -39,7 +37,7 @@ GenreList.propTypes = {
   allGenreList: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
-  setCurrentGenre: PropTypes.func
+  setActiveItem: PropTypes.func
 };
 
 export default GenreList;

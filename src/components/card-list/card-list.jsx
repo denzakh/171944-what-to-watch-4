@@ -6,7 +6,7 @@ import withVideoPlayer from "../../hocs/with-video-player/with-video-player";
 const SmallMovieCardWrapped = withVideoPlayer(SmallMovieCard);
 
 const CardList = (props) => {
-    const films = props.films;
+    const {films, setActiveItem} = props;
 
     return (
       <div className="catalog__movies-list">
@@ -14,7 +14,7 @@ const CardList = (props) => {
           return (<SmallMovieCardWrapped
             key={film.title}
             film={film}
-            onClick={props.onActiveMoviePageChange} />);
+            onClick={setActiveItem} />);
         })}
       </div>
     );
@@ -25,5 +25,5 @@ export default CardList;
 
 CardList.propTypes = {
   films: PropTypes.array.isRequired,
-  onActiveMoviePageChange: PropTypes.func
+  setActiveItem: PropTypes.func
 };

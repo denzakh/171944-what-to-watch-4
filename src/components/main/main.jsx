@@ -7,6 +7,7 @@ import {actionCreatorList} from "../../reducer";
 import {connect} from "react-redux";
 import {getFilmsGenreLikeThis} from "../../utils/common-utils";
 import ShowMoreButton from "../show-more-button/show-more-button";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
 
 const Main = (props) => {
 
@@ -15,6 +16,9 @@ const Main = (props) => {
 
   const filmsGenreSorted = getFilmsGenreLikeThis(films, promoFilm, [currentGenre]);
   const filmsGenreSortedShow = filmsGenreSorted.filter((film, i)=>i < showMainCardCount);
+
+  const GenreListWrapped = withActiveItem(GenreList, currentGenre);
+  const CardListWrapped = withActiveItem(CardList);
 
   const renderMoreButton = () => {
     if (showMainCardCount < filmsGenreSorted.length) {
@@ -83,15 +87,17 @@ const Main = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <GenreList
+
+
+
+        <GenreListWrapped
           allGenreList={getAllUniqueGenres(films, genresListCount)}
-          setCurrentGenre={props.setCurrentGenre}
-          currentGenre={props.currentGenre}
+          toChangeActiveItem={props.setCurrentGenre}
         />
 
-        <CardList
+        <CardListWrapped
           films={filmsGenreSortedShow}
-          onActiveMoviePageChange={onActiveMoviePageChange}
+          toChangeActiveItem={onActiveMoviePageChange}
         />
 
         <div className="catalog__more">
