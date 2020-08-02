@@ -31,6 +31,7 @@ class App extends PureComponent {
     if (this.state.activeMoviePage) {
       return <MoviePage
         onActiveMoviePageChange={this.onActiveMoviePageChange}
+        film={this.state.activeMoviePage}
       />;
     } else {
       return null;
