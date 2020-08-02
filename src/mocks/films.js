@@ -62,6 +62,7 @@ const films = [
     Awards: `Nominated for 1 Oscar. Another 45 wins & 93 nominations.`,
     Poster: `https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg`,
     bg: `https://medias.spotern.com/spots/w1280/212/212025-1562323728.jpg`,
+    bgcolor: `#8D918B`,
     Ratings: [
       {
         Source: `Internet Movie Database`,
