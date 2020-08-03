@@ -14,8 +14,11 @@ const withVideoPlayer = (Component) => {
       this.state = {
         isPlaying: props.isPlaying || false,
         isMuted: props.isMuted || true,
-        progress: 0,
-        duration: null
+        isFullscreen: false,
+        progress: 30,
+        duration: null,
+        currentTime: null,
+        timeElapsed: null
       };
 
       this._videoRef = createRef();
@@ -33,7 +36,7 @@ const withVideoPlayer = (Component) => {
         video.muted = true;
       }
 
-      video.addEventListener("canplay", ()=> {
+      video.addEventListener(`canplay`, ()=> {
           let hasHours = ((video.duration / 3600) >= 1.0);
           let duration = formatTime(video.duration, hasHours);
           this.setState({
@@ -41,23 +44,31 @@ const withVideoPlayer = (Component) => {
           })
       }, false);
 
-      video.addEventListener("timeupdate", ()=> {
-       let hasHours = ((video.duration / 3600) >= 1.0);
+      // let isUpdate = true;
+      // let lastProgress = 0;
 
-        let isUpdate = true;
-        if(isUpdate && video.currentTime) {
-          let currentTime = formatTime(video.currentTime, hasHours);
-          let progress = Math.floor(video.currentTime * 100 / video.duration);
-          console.log(progress);
-          this.setState({
-            progress
-          });
-          isUpdate = false;
-          setTimeout(()=>{
-            isUpdate = true;
-          }, 1000);
-        }
-      }, false);
+      // video.addEventListener(`timeupdate`, ()=> {
+      //  let hasHours = ((video.duration / 3600) >= 1.0);
+
+      //   if(isUpdate && video.currentTime) {
+      //     let currentTime = formatTime(video.currentTime, hasHours);
+
+      //     let progress = Math.floor(video.currentTime * 100 / video.duration);
+      //     if(isNaN(progress)) {
+      //       progress = lastProgress;
+      //     } else {
+      //       lastProgress = progress;
+      //     }
+      //     console.log(progress, lastProgress);
+      //     // this.setState({
+      //     //   progress
+      //     // });
+      //     isUpdate = false;
+      //     setTimeout(()=>{
+      //       isUpdate = true;
+      //     }, 1000);
+      //   }
+      // }, false);
     }
 
     componentDidUpdate(prevProps) {
@@ -100,6 +111,18 @@ const withVideoPlayer = (Component) => {
     }
 
     handlePlayToggle(progress) {
+      const video = this._videoRef.current;
+      if(this.state.isPlaying) {
+        this.setState({
+          isPlaying: false,
+          currentTime: video.currentTime
+        });
+      } else {
+        this.setState({
+          isPlaying: true
+        });
+        video.currentTime = this.state.currentTime;
+      }
       this.setState({
         isPlaying: !this.state.isPlaying,
         progress
@@ -127,6 +150,7 @@ const withVideoPlayer = (Component) => {
         <Component
           {...this.props}
           isPlaying={this.state.isPlaying}
+          isFullscreen={this.state.isFullscreen}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           handlePlayToggle={this.handlePlayToggle}

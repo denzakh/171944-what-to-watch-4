@@ -2,9 +2,29 @@ import React from "react";
 
 const VideoPlayer = (props) => {
 
-  const {onClose, onPlay, handlePlayToggle, isPlaying, duration, progress} = props;
+  const {onClose, onPlay, handlePlayToggle, isPlaying, duration, progress, isFullscreen} = props;
 
-  // controls.progress[0].style.width = Math.floor(progress * controls.total.width()) + "px";
+  const getPlayPauseButton = () => {
+    if(isPlaying) {
+      return (
+        <button type="button" className="player__play" onClick={handlePlayToggle}>
+          <svg viewBox={`0 0 14 21`} width={14} height={21}>
+            <use xlinkHref={`#pause`} />
+          </svg>
+          <span>Pause</span>
+        </button>
+      );
+    } else {
+      return (
+        <button type="button" className="player__play" onClick={handlePlayToggle}>
+          <svg viewBox={`0 0 19 19`} width={19} height={19}>
+            <use xlinkHref={`#play-s`}></use>
+          </svg>
+          <span>Play</span>
+        </button>
+      );
+    }
+  }
 
   return <div className="player">
     {props.children}
@@ -21,12 +41,9 @@ const VideoPlayer = (props) => {
       </div>
 
       <div className="player__controls-row">
-        <button type="button" className="player__play" onClick={handlePlayToggle}>
-          <svg viewBox={`0 0 19 19`} width={19} height={19}>
-            <use xlinkHref={`#play-s`}></use>
-          </svg>
-          <span>Play</span>
-        </button>
+
+        {getPlayPauseButton()}
+
         <div className="player__name">Transpotting</div>
 
         <button type="button" className="player__full-screen">
